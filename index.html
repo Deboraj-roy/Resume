@@ -9,6 +9,57 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+.container {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.skills .skill-tags,
+.interests .interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tags span,
+.interest-tags span {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.languages .language-list div {
+  margin-bottom: 10px;
+}
+
+.languages .language-list p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.languages .language-list span {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.interests .interest-tags span {
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
 </style>
 </head>
 <body class="w3-light-grey">
@@ -20,8 +71,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <div class="w3-row-padding">
   
     <!-- Left Column -->
-    <div class="w3-third">s
-    
+    <div class="w3-third">    
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
           <img src="avater.jfif" style="width:100%" alt="Avatar">
@@ -29,7 +79,60 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <h2 style=" color: green">DEBORAJ ROY</h2>
           </div>
         </div>
+        
         <div class="w3-container">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>SOFTWARE ENGINEER</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Mohammadpur, Dhaka</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>deborajroy123@gmail.com</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>01708119559</p>
+          <hr>
+        
+          <div class="container">
+            <section class="skills">
+              <h2>SKILLS</h2>
+              <div class="skill-tags">
+                <span>ASP .NET Core</span>
+                <span>Git</span>
+                <span>Azure Deployment</span>
+                <span>Angular</span>
+                <span>C#</span>
+                <span>cPanel</span>
+                <span>LaTeX</span>
+                <span>Linux</span>
+                <span>Cloud computing with AWS</span>
+                <span>HTML/CSS</span>
+                <span>Competitive programming</span>
+              </div>
+            </section>
+          
+            <section class="languages">
+              <h2>LANGUAGES</h2>
+              <div class="language-list">
+                <div>
+                  <p>English</p>
+                  <span>Full Professional Proficiency</span>
+                </div>
+                <div>
+                  <p>Bangla</p>
+                  <span>Native or Bilingual Proficiency</span>
+                </div>
+              </div>
+            </section>
+          
+            <section class="interests">
+              <h2>INTERESTS</h2>
+              <div class="interest-tags">
+                <span>Photography</span>
+                <span>Travelling / Exploring</span>
+                <span>Chess</span>
+              </div>
+            </section>
+          </div>
+          
+        </div>
+        
+        
+        <!-- <div class="w3-container">
           <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>SOFTWARE ENGINEER</p>
           <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Mohammadpur, Dhaka</p>
           <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>deborajroy123@gmail.com</p>
@@ -67,7 +170,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
           </div>
           <br>
-        </div>
+        
+        
+        </div> -->
       </div><br>
 
     <!-- End Left Column -->
@@ -94,10 +199,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h5 class="w3-opacity"><b>Server Engineer at Bengal Software</b></h5>
           <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2022 - Jan 2023</span></h6>
           <p>
-            As a Server Engineer at Bengal Soft, I managed critical AWS services, including configuring and maintaining EC2 instances, optimizing S3 buckets for secure storage, and ensuring high performance of RDS databases. I successfully deployed and maintained MERN and Laravel projects, implementing load balancing and auto-scaling to enhance reliability and handle high traffic demands.
-             Additionally, I administered cPanel for efficient web hosting, domain management, and email configuration.
-             My role involved optimizing server performance, conducting regular backups, and ensuring system security and uptime to meet business objectives.  
-          </p>
+            As a Server Engineer at Bengal Soft, I managed AWS services (EC2, S3, RDS), deployed MERN and Laravel projects, implemented load balancing and auto-scaling, administered cPanel, and ensured system security, performance, and reliability.</p>
           <hr>
         </div>
        
