@@ -1,201 +1,590 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Debora J Roy - Resume</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <title>Debora J Roy - Senior ASP.NET Core Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .section-title { @apply text-2xl font-semibold text-white mb-4 font-cinzel; }
-        .timeline-item { @apply mb-6 bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-purple-500; }
-        .project-item { @apply mb-4 bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-purple-500; }
-        .skill-item { @apply inline-block bg-purple-600 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2 hover:bg-purple-700 transition; }
-        .container { 
-            background: linear-gradient(135deg, #1e1e2f 0%, #2a2a4a 100%); 
-            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .avatar { 
-            @apply rounded-full w-32 h-32 mx-auto mb-4 border-4 border-purple-500 shadow-lg;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
         }
-        .avatar:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 0 15px rgba(147, 51, 234, 0.7); 
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
         }
-        .header-links a { @apply hover:text-purple-400 transition; }
-        .download-btn { @apply bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .profile-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            transform: translateY(-3px);
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            animation: slideIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-category p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .experience-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .job-title, .project-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .company, .project-links {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .experience-item ul, .project-item ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-item li, .project-item li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: var(--gray);
+        }
+
+        .experience-item li::before, .project-item li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .education-item, .cert-item {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .degree {
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .institution {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .additional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .additional-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 4px solid var(--accent);
+        }
+
+        .additional-box h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .print-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
         @media print {
-            body { @apply bg-white; }
-            .container { 
-                @apply shadow-none bg-white; 
-                background: none; 
+            body {
+                background: white;
+                padding: 0;
             }
-            .timeline-item, .project-item { @apply border-gray-300 bg-white; }
-            .section-title { @apply text-gray-800; }
-            .skill-item { @apply bg-gray-100 text-gray-700; }
-            .no-print { display: none; }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .print-button {
+                display: none;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .experience-header, .project-header {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-900">
-    <div class="container mx-auto max-w-4xl text-white shadow-lg p-8 my-8">
-        <!-- Header -->
-        <header class="text-center mb-8">
-            <img src="avater.jpg" alt="Debora J Roy" class="avatar">
-            <h1 class="text-4xl font-bold font-cinzel">Debora J Roy</h1>
-            <p class="text-gray-300 mt-2 header-links">
-                <a href="mailto:deborajroy.in@gmail.com" class="hover:underline">deborajroy.in@gmail.com</a> | 
-                <a href="tel:+8801708119559" class="hover:underline">+8801708119559</a> | 
-                <a href="https://github.com/Deboraj-roy" target="_blank" class="hover:underline">github.com/Deboraj-roy</a> | 
-                <a href="https://linkedin.com/in/deboraj-roy" target="_blank" class="hover:underline">linkedin.com/in/deboraj-roy</a> | 
-                <a href="https://deborajroy.in" target="_blank" class="hover:underline">deborajroy.in</a>
-            </p>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-section">
+                <img src="avater.jpg" alt="Debora J Roy" class="profile-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22150%22%3E%3Crect fill=%22%234f46e5%22 width=%22150%22 height=%22150%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2260%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22%3EDR%3C/text%3E%3C/svg%3E'">
+                <h1>DEBORA J ROY</h1>
+                <p class="title">Senior ASP.NET Core Developer</p>
+                <div class="contact-info">
+                    <a href="mailto:deborajroy.in@gmail.com"><i class="fas fa-envelope"></i> deborajroy.in@gmail.com</a>
+                    <a href="tel:+8801708119559"><i class="fas fa-phone"></i> +880 1708 119559</a>
+                    <a href="https://github.com/Deboraj-roy" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://linkedin.com/in/deboraj-roy" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://deborajroy.in" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+                </div>
+            </div>
         </header>
 
-        <!-- Summary -->
-        <section class="mb-8">
-            <h2 class="section-title">Summary</h2>
-            <p class="text-gray-300">
-                Senior ASP.NET Core Developer with hands-on experience in .NET 8, C#, ASP.NET Core MVC/Web API, and Angular. Built microservices and full-stack applications deployed with Docker and cloud services. Strong focus on performance, clean architecture, and delivering business value. Seeking a Senior Software Engineer role to build scalable systems and mentor teams.
-            </p>
-        </section>
+        <div class="content">
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-user"></i> Summary</h2>
+                <p class="summary">Senior ASP.NET Core Developer with hands-on experience in .NET 8, C#, ASP.NET Core MVC/Web API, and Angular. Built microservices and full-stack applications deployed with Docker and cloud services. Strong focus on performance, clean architecture, and delivering business value. Seeking a Senior Software Engineer role to build scalable systems and mentor teams.</p>
+            </section>
 
-        <!-- Technical Skills -->
-        <section class="mb-8">
-            <h2 class="section-title">Technical Skills</h2>
-            <div>
-                <p class="font-semibold text-gray-200">Languages & Frameworks:</p>
-                <span class="skill-item">C#</span>
-                <span class="skill-item">.NET 8</span>
-                <span class="skill-item">ASP.NET Core</span>
-                <span class="skill-item">Entity Framework Core</span>
-                <span class="skill-item">LINQ</span>
-            </div>
-            <div>
-                <p class="font-semibold text-gray-200">Frontend:</p>
-                <span class="skill-item">Angular</span>
-                <span class="skill-item">TypeScript</span>
-                <span class="skill-item">HTML5</span>
-                <span class="skill-item">CSS3</span>
-                <span class="skill-item">JavaScript</span>
-            </div>
-            <div>
-                <p class="font-semibold text-gray-200">Databases:</p>
-                <span class="skill-item">SQL Server</span>
-                <span class="skill-item">MySQL</span>
-                <span class="skill-item">Oracle (basic)</span>
-            </div>
-            <div>
-                <p class="font-semibold text-gray-200">Cloud & DevOps:</p>
-                <span class="skill-item">AWS (S3/EC2 basics)</span>
-                <span class="skill-item">Docker</span>
-                <span class="skill-item">cPanel</span>
-                <span class="skill-item">Azure (familiar)</span>
-            </div>
-            <div>
-                <p class="font-semibold text-gray-200">Tools:</p>
-                <span class="skill-item">Visual Studio</span>
-                <span class="skill-item">SQL Server Management Studio</span>
-                <span class="skill-item">Git</span>
-                <span class="skill-item">TortoiseGit</span>
-                <span class="skill-item">Docker</span>
-            </div>
-            <div>
-                <p class="font-semibold text-gray-200">Other:</p>
-                <span class="skill-item">RESTful APIs</span>
-                <span class="skill-item">JWT/OAuth2</span>
-                <span class="skill-item">Microservices</span>
-                <span class="skill-item">Unit Testing (xUnit/NUnit)</span>
-                <span class="skill-item">CI/CD basics</span>
-            </div>
-        </section>
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-code"></i> Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Languages & Frameworks</h3>
+                        <p>C#, .NET 8, ASP.NET Core, Entity Framework Core, LINQ</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <p>Angular, TypeScript, HTML5, CSS3, JavaScript</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Databases</h3>
+                        <p>SQL Server, MySQL, Oracle (basic)</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Cloud & DevOps</h3>
+                        <p>AWS (S3/EC2 basics), Docker, cPanel, Azure (familiar)</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools</h3>
+                        <p>Visual Studio, SQL Server Management Studio, Git, TortoiseGit, Docker</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Other</h3>
+                        <p>RESTful APIs, JWT/OAuth2, Microservices, Unit Testing (xUnit/NUnit), CI/CD basics</p>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Professional Experience -->
-        <section class="mb-8">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="timeline-item">
-                <h3 class="font-semibold text-gray-200">Software Engineer — PlayOn 24 (Dhaka)</h3>
-                <p class="text-gray-400 italic">Oct 2024 – Present</p>
-                <ul class="list-disc pl-5 text-gray-300">
-                    <li>Designed and implemented backend APIs in ASP.NET Core (NET 8) for client websites, following RESTful conventions and layered architecture.</li>
-                    <li>Introduced Docker-based local dev workflows and simplified deployment processes, reducing environment setup time by ~30%.</li>
-                    <li>Collaborated with frontend team on Angular integrations and improved API error handling and logging for faster issue resolution.</li>
-                    <li><span class="font-semibold">Technologies:</span> ASP.NET Core, C#, Docker, SQL Server, Angular.</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h3 class="font-semibold text-gray-200">Server Engineer (Intern) — Bengal Software</h3>
-                <p class="text-gray-400 italic">Aug 2022 – Jan 2023</p>
-                <ul class="list-disc pl-5 text-gray-300">
-                    <li>Supported server deployments and application troubleshooting on Linux hosting environments; handled backups and basic performance tuning.</li>
-                    <li>Assisted in migrating legacy website components to modern ASP.NET Core endpoints.</li>
-                    <li><span class="font-semibold">Technologies:</span> cPanel, Linux, ASP.NET Core.</li>
-                </ul>
-            </div>
-        </section>
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="job-title">Software Engineer</div>
+                            <div class="company">PlayOn 24, Dhaka</div>
+                        </div>
+                        <div class="date">Oct 2024 – Present</div>
+                    </div>
+                    <ul>
+                        <li>Designed and implemented backend APIs in ASP.NET Core (.NET 8) for client websites, following RESTful conventions and layered architecture</li>
+                        <li>Introduced Docker-based local dev workflows and simplified deployment processes, reducing environment setup time</li>
+                        <li>Collaborated with frontend team on Angular integrations and improved API error handling and logging for faster issue resolution</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">ASP.NET Core</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Angular</span>
+                    </div>
+                </div>
 
-        <!-- Projects -->
-        <section class="mb-8">
-            <h2 class="section-title">Projects</h2>
-            <div class="project-item">
-                <h3 class="font-semibold text-gray-200">ASP.NET-Core-Microservices</h3>
-                <p class="text-gray-400"><a href="#" class="hover:text-purple-400">[GitHub link / Live]</a></p>
-                <ul class="list-disc pl-5 text-gray-300">
-                    <li>Built a microservices-style demo using ASP.NET Core (.NET 8), separated concerns into API and worker services, and served the site via Cloudflare Workers (live). Implemented CI-friendly Docker images.</li>
-                    <li><span class="font-semibold">Role:</span> Backend design, API development, Dockerization.</li>
-                </ul>
-            </div>
-            <div class="project-item">
-                <h3 class="font-semibold text-gray-200">Library Management System — SPA</h3>
-                <p class="text-gray-400"><a href="#" class="hover:text-purple-400">[GitHub link / Live]</a></p>
-                <ul class="list-disc pl-5 text-gray-300">
-                    <li>Full-stack SPA using ASP.NET Core backend and Angular frontend. Implemented JWT-based auth and dynamic role-based access.</li>
-                    <li><span class="font-semibold">Role:</span> End-to-end implementation, REST APIs, database modeling.</li>
-                </ul>
-            </div>
-            <div class="project-item">
-                <h3 class="font-semibold text-gray-200">eTicket eCommerce</h3>
-                <p class="text-gray-400"><a href="#" class="hover:text-purple-400">[GitHub link / Live]</a></p>
-                <ul class="list-disc pl-5 text-gray-300">
-                    <li>eCommerce web app with product catalog, cart, and checkout flows using ASP.NET Core MVC (NET 7).</li>
-                    <li><span class="font-semibold">Role:</span> Core backend features, payment flow integration, and deployment.</li>
-                </ul>
-            </div>
-        </section>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="job-title">Server Engineer (Intern)</div>
+                            <div class="company">Bengal Software</div>
+                        </div>
+                        <div class="date">Aug 2022 – Jan 2023</div>
+                    </div>
+                    <ul>
+                        <li>Supported server deployments and application troubleshooting on Linux hosting environments; handled backups and basic performance tuning</li>
+                        <li>Assisted in migrating legacy website components to modern ASP.NET Core endpoints</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">cPanel</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">ASP.NET Core</span>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Education -->
-        <section class="mb-8">
-            <h2 class="section-title">Education</h2>
-            <div>
-                <h3 class="font-semibold text-gray-200">BSc in Computer Science & Engineering — AIUB</h3>
-                <p class="text-gray-400 italic">Jan 2019 – Dec 2022</p>
-                <p class="text-gray-300">CGPA: 3.65 / 4.00</p>
-            </div>
-        </section>
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-project-diagram"></i> Selected Projects</h2>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">ASP.NET Core Microservices</div>
+                            <div class="project-links"><i class="fab fa-github"></i> GitHub + Live Demo</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Built a microservices-style demo using ASP.NET Core (.NET 8), separated concerns into API and worker services, and served the site via Cloudflare Workers (live). Implemented CI-friendly Docker images</li>
+                        <li>Role: Backend design, API development, Dockerization</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">.NET 8</span>
+                        <span class="tech-tag">Microservices</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Cloudflare</span>
+                    </div>
+                </div>
 
-        <!-- Certifications -->
-        <section class="mb-8">
-            <h2 class="section-title">Certifications</h2>
-            <ul class="list-disc pl-5 text-gray-300">
-                <li>Full Stack ASP.NET Core MVC Web Development — DevSkill (2024)</li>
-                <li>Professional Programming with C# — DevSkill (2023)</li>
-                <li>AWS Services for Solutions Architect Associate — Udemy (2022)</li>
-            </ul>
-        </section>
+                <div class="project-item">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Library Management System - SPA</div>
+                            <div class="project-links"><i class="fab fa-github"></i> GitHub + Live Demo</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Full-stack SPA using ASP.NET Core backend and Angular frontend. Implemented JWT-based auth and dynamic role-based access</li>
+                        <li>Role: End-to-end implementation, REST APIs, database modeling</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">ASP.NET Core</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">SQL Server</span>
+                    </div>
+                </div>
 
-        <!-- Additional -->
-        <section>
-            <h2 class="section-title">Additional</h2>
-            <p class="text-gray-300"><span class="font-semibold">Languages:</span> English (Professional), Bengali (Native)</p>
-            <p class="text-gray-300"><span class="font-semibold">Interests:</span> Competitive programming, photography, chess</p>
-        </section>
+                <div class="project-item">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">eTicket eCommerce</div>
+                            <div class="project-links"><i class="fab fa-github"></i> GitHub + Live Demo</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>eCommerce web app with product catalog, cart, and checkout flows using ASP.NET Core MVC (.NET 7)</li>
+                        <li>Role: Core backend features, payment flow integration, and deployment</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">ASP.NET Core MVC</span>
+                        <span class="tech-tag">.NET 7</span>
+                        <span class="tech-tag">eCommerce</span>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Download Button -->
-        <div class="text-center no-print mt-8">
-            <a href="javascript:window.print()" class="download-btn">Download as PDF</a>
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="education-item">
+                    <div class="degree">BSc in Computer Science & Engineering</div>
+                    <div class="institution">American International University-Bangladesh (AIUB)</div>
+                    <div class="date">Jan 2019 – Dec 2022 | CGPA: 3.65 / 4.00</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
+                <div class="cert-item">
+                    <div><strong>Full Stack ASP.NET Core MVC Web Development</strong> — DevSkill (2024)</div>
+                </div>
+                <div class="cert-item">
+                    <div><strong>Professional Programming with C#</strong> — DevSkill (2023)</div>
+                </div>
+                <div class="cert-item">
+                    <div><strong>AWS Services for Solutions Architect Associate</strong> — Udemy (2022)</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-star"></i> Additional Information</h2>
+                <div class="additional-grid">
+                    <div class="additional-box">
+                        <h3>Languages</h3>
+                        <p>English (Professional), Bengali (Native)</p>
+                    </div>
+                    <div class="additional-box">
+                        <h3>Interests</h3>
+                        <p>Competitive programming, Photography, Chess</p>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
+
+    <button class="print-button" onclick="window.print()">
+        <i class="fas fa-print"></i> Print / Save PDF
+    </button>
+
+    <script>
+        // Smooth scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add hover effect to skill categories
+        const skillCategories = document.querySelectorAll('.skill-category');
+        skillCategories.forEach(category => {
+            category.addEventListener('mouseenter', function() {
+                this.style.borderLeftColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+            });
+            category.addEventListener('mouseleave', function() {
+                this.style.borderLeftColor = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+            });
+        });
+    </script>
 </body>
 </html>
