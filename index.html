@@ -1,187 +1,201 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Debora J Roy — Resume</title>
-    <meta name="description" content="Resume of Debora J Roy — Senior ASP.NET Core Developer">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debora J Roy - Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root{--accent:#0f766e;--muted:#6b7280;--bg:#f8fafc;--card:#ffffff}
-        *{box-sizing:border-box}
-        html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#0f172a}
-        a{color:var(--accent);text-decoration:none}
-        .wrap{max-width:1000px;margin:32px auto;padding:24px}
-        .card{background:var(--card);border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.08);overflow:hidden}
-        .grid{display:grid;grid-template-columns:320px 1fr}
-        header{display:flex;gap:16px;padding:24px}
-        .avatar{width:120px;height:120px;border-radius:12px;object-fit:cover;border:2px solid rgba(15,118,110,0.12)}
-        .name {display:flex;flex-direction:column;justify-content:center}
-        .name h1{margin:0;font-size:1.6rem;letter-spacing:0.4px}
-        .meta{color:var(--muted);font-size:0.95rem;margin-top:6px}
-        .contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
-        .pill{background:#eef2f2;color:#0f172a;padding:6px 10px;border-radius:999px;font-weight:600;font-size:0.9rem}
-        main{padding:24px 24px 32px}
-        section{margin-bottom:20px}
-        h2.section-title{margin:0 0 12px 0;color:var(--accent);font-size:1.05rem}
-        .summary{color:var(--muted);line-height:1.5}
-        .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-        ul.skills{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
-        ul.skills li{background:#f1f5f4;padding:6px 10px;border-radius:999px;font-size:0.9rem;color:#064e48}
-        .experience .item{margin-bottom:14px}
-        .item .role{font-weight:600}
-        .item .meta{color:var(--muted);font-size:0.9rem;margin-bottom:6px}
-        .projects li{margin-bottom:10px}
-        .small{font-size:0.9rem;color:var(--muted)}
-        footer.card-footer{background:#fff;padding:14px 24px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center}
-        .actions{display:flex;gap:8px}
-        button.btn{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
-        button.ghost{background:#eef2f2;color:var(--accent)}
-
-        /* Responsive */
-        @media (max-width:880px){.grid{grid-template-columns:1fr}.wrap{margin:12px}}
-
-        /* Print */
-        @media print{body{background:#fff} .wrap{box-shadow:none} button, .actions {display:none}}
+        body { font-family: 'Inter', sans-serif; }
+        .section-title { @apply text-2xl font-semibold text-white mb-4 font-cinzel; }
+        .timeline-item { @apply mb-6 bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-purple-500; }
+        .project-item { @apply mb-4 bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-purple-500; }
+        .skill-item { @apply inline-block bg-purple-600 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2 hover:bg-purple-700 transition; }
+        .container { 
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a2a4a 100%); 
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+        }
+        .avatar { 
+            @apply rounded-full w-32 h-32 mx-auto mb-4 border-4 border-purple-500 shadow-lg;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .avatar:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.7); 
+        }
+        .header-links a { @apply hover:text-purple-400 transition; }
+        .download-btn { @apply bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition; }
+        @media print {
+            body { @apply bg-white; }
+            .container { 
+                @apply shadow-none bg-white; 
+                background: none; 
+            }
+            .timeline-item, .project-item { @apply border-gray-300 bg-white; }
+            .section-title { @apply text-gray-800; }
+            .skill-item { @apply bg-gray-100 text-gray-700; }
+            .no-print { display: none; }
+        }
     </style>
 </head>
-<body>
-    <div class="wrap">
-        <div class="card">
-            <div class="grid">
-                <!-- Left column (sidebar) -->
-                <aside style="padding:20px;border-right:1px solid #f1f5f9">
-                    <div style="text-align:center">
-                        <img src="avater.jpg" alt="Debora J Roy" class="avatar">
-                        <div style="margin-top:12px">
-                            <h3 style="margin:6px 0">DEBORA J ROY</h3>
-                            <div class="small">Senior ASP.NET Core Developer</div>
-                        </div>
-                    </div>
+<body class="bg-gray-900">
+    <div class="container mx-auto max-w-4xl text-white shadow-lg p-8 my-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <img src="avater.jpg" alt="Debora J Roy" class="avatar">
+            <h1 class="text-4xl font-bold font-cinzel">Debora J Roy</h1>
+            <p class="text-gray-300 mt-2 header-links">
+                <a href="mailto:deborajroy.in@gmail.com" class="hover:underline">deborajroy.in@gmail.com</a> | 
+                <a href="tel:+8801708119559" class="hover:underline">+8801708119559</a> | 
+                <a href="https://github.com/Deboraj-roy" target="_blank" class="hover:underline">github.com/Deboraj-roy</a> | 
+                <a href="https://linkedin.com/in/deboraj-roy" target="_blank" class="hover:underline">linkedin.com/in/deboraj-roy</a> | 
+                <a href="https://deborajroy.in" target="_blank" class="hover:underline">deborajroy.in</a>
+            </p>
+        </header>
 
-                    <div style="margin-top:18px">
-                        <h4 class="section-title">Contact</h4>
-                        <div class="small">
-                            <div>Email: <a href="mailto:deborajroy.in@gmail.com">deborajroy.in@gmail.com</a></div>
-                            <div>Phone: <a href="tel:+8801708119559">+8801708119559</a></div>
-                            <div>GitHub: <a href="https://github.com/Deboraj-roy" target="_blank">github.com/Deboraj-roy</a></div>
-                            <div>LinkedIn: <a href="https://www.linkedin.com/in/deboraj-roy-a725731a2" target="_blank">linkedin.com/in/deboraj-roy</a></div>
-                            <div>Portfolio: <a href="https://deborajroy.in" target="_blank">deborajroy.in</a></div>
-                        </div>
-                    </div>
+        <!-- Summary -->
+        <section class="mb-8">
+            <h2 class="section-title">Summary</h2>
+            <p class="text-gray-300">
+                Senior ASP.NET Core Developer with hands-on experience in .NET 8, C#, ASP.NET Core MVC/Web API, and Angular. Built microservices and full-stack applications deployed with Docker and cloud services. Strong focus on performance, clean architecture, and delivering business value. Seeking a Senior Software Engineer role to build scalable systems and mentor teams.
+            </p>
+        </section>
 
-                    <div style="margin-top:16px">
-                        <h4 class="section-title">Skills</h4>
-                        <ul class="skills">
-                            <li>C#</li><li>.NET 8</li><li>ASP.NET Core</li><li>Entity Framework</li><li>Angular</li>
-                            <li>TypeScript</li><li>SQL Server</li><li>Docker</li><li>AWS</li>
-                        </ul>
-                    </div>
-
-                    <div style="margin-top:16px">
-                        <h4 class="section-title">Languages</h4>
-                        <div class="small">English (Professional), Bengali (Native)</div>
-                    </div>
-
-                    <div style="margin-top:16px">
-                        <h4 class="section-title">Interests</h4>
-                        <div class="small">Competitive programming, photography, chess</div>
-                    </div>
-                </aside>
-
-                <!-- Right column (main) -->
-                <main>
-                    <header style="display:flex;align-items:flex-start;justify-content:space-between">
-                        <div style="flex:1">
-                            <p class="summary">Senior ASP.NET Core Developer with hands-on experience in .NET 8, C#, ASP.NET Core MVC/Web API, and Angular. Built microservices and full-stack applications deployed with Docker and cloud services. Strong focus on performance, clean architecture, and delivering business value. Seeking a Senior Software Engineer role to build scalable systems and mentor teams.</p>
-                        </div>
-                        <div class="actions">
-                            <button class="btn" onclick="window.print()">Print / Save PDF</button>
-                            <button class="btn ghost" onclick="copyContact()">Copy Contact</button>
-                        </div>
-                    </header>
-
-                    <section class="experience">
-                        <h2 class="section-title">Professional Experience</h2>
-                        <div class="item">
-                            <div class="role">Software Engineer — PlayOn 24 (Dhaka)</div>
-                            <div class="meta">Oct 2024 – Present</div>
-                            <ul>
-                                <li>Designed and implemented backend APIs in ASP.NET Core (.NET 8) for client websites, following RESTful conventions and layered architecture.</li>
-                                <li>Introduced Docker-based local dev workflows and simplified deployment processes, reducing environment setup time and making CI-friendly Docker images.</li>
-                                <li>Collaborated with frontend team on Angular integrations and improved API error handling and logging for faster issue resolution.</li>
-                            </ul>
-                            <div class="small">Technologies: ASP.NET Core, C#, Docker, SQL Server, Angular</div>
-                        </div>
-
-                        <div class="item">
-                            <div class="role">Server Engineer (Intern) — Bengal Software</div>
-                            <div class="meta">Aug 2022 – Jan 2023</div>
-                            <ul>
-                                <li>Supported server deployments and application troubleshooting on Linux hosting environments; handled backups and basic performance tuning.</li>
-                                <li>Assisted in migrating legacy website components to modern ASP.NET Core endpoints.</li>
-                            </ul>
-                            <div class="small">Technologies: cPanel, Linux, ASP.NET Core</div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 class="section-title">Selected Projects</h2>
-                        <ul class="projects">
-                            <li>
-                                <strong>ASP.NET-Core-Microservices</strong> — Built a microservices-style demo using ASP.NET Core (.NET 8), separated concerns into API and worker services, and served the site via Cloudflare Workers (live). Implemented CI-friendly Docker images. (Repo + Live)
-                            </li>
-                            <li>
-                                <strong>Library Management System — SPA</strong> — Full-stack SPA using ASP.NET Core backend and Angular frontend. Implemented JWT-based auth and dynamic role-based access. (GitHub + Live)
-                            </li>
-                            <li>
-                                <strong>eTicket eCommerce</strong> — eCommerce web app with product catalog, cart, and checkout flows using ASP.NET Core MVC (.NET 7). Role: Core backend features and deployment. (GitHub + Live)
-                            </li>
-                        </ul>
-                    </section>
-
-                    <section>
-                        <h2 class="section-title">Education & Certifications</h2>
-                        <div style="display:flex;flex-direction:column;gap:10px">
-                            <div>
-                                <strong>BSc in Computer Science & Engineering — AIUB</strong>
-                                <div class="small">Jan 2019 – Dec 2022 · CGPA: 3.65 / 4.00</div>
-                            </div>
-
-                            <div>
-                                <strong>Certifications</strong>
-                                <ul class="small">
-                                    <li>Full Stack ASP.NET Core MVC Web Development — DevSkill (2024)</li>
-                                    <li>Professional Programming with C# — DevSkill (2023)</li>
-                                    <li>AWS Services for Solutions Architect Associate — Udemy (2022)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 class="section-title">Additional</h2>
-                        <div class="small">
-                            Languages: English (Professional), Bengali (Native). Interests: Competitive programming, photography, chess.
-                        </div>
-                    </section>
-                </main>
+        <!-- Technical Skills -->
+        <section class="mb-8">
+            <h2 class="section-title">Technical Skills</h2>
+            <div>
+                <p class="font-semibold text-gray-200">Languages & Frameworks:</p>
+                <span class="skill-item">C#</span>
+                <span class="skill-item">.NET 8</span>
+                <span class="skill-item">ASP.NET Core</span>
+                <span class="skill-item">Entity Framework Core</span>
+                <span class="skill-item">LINQ</span>
             </div>
+            <div>
+                <p class="font-semibold text-gray-200">Frontend:</p>
+                <span class="skill-item">Angular</span>
+                <span class="skill-item">TypeScript</span>
+                <span class="skill-item">HTML5</span>
+                <span class="skill-item">CSS3</span>
+                <span class="skill-item">JavaScript</span>
+            </div>
+            <div>
+                <p class="font-semibold text-gray-200">Databases:</p>
+                <span class="skill-item">SQL Server</span>
+                <span class="skill-item">MySQL</span>
+                <span class="skill-item">Oracle (basic)</span>
+            </div>
+            <div>
+                <p class="font-semibold text-gray-200">Cloud & DevOps:</p>
+                <span class="skill-item">AWS (S3/EC2 basics)</span>
+                <span class="skill-item">Docker</span>
+                <span class="skill-item">cPanel</span>
+                <span class="skill-item">Azure (familiar)</span>
+            </div>
+            <div>
+                <p class="font-semibold text-gray-200">Tools:</p>
+                <span class="skill-item">Visual Studio</span>
+                <span class="skill-item">SQL Server Management Studio</span>
+                <span class="skill-item">Git</span>
+                <span class="skill-item">TortoiseGit</span>
+                <span class="skill-item">Docker</span>
+            </div>
+            <div>
+                <p class="font-semibold text-gray-200">Other:</p>
+                <span class="skill-item">RESTful APIs</span>
+                <span class="skill-item">JWT/OAuth2</span>
+                <span class="skill-item">Microservices</span>
+                <span class="skill-item">Unit Testing (xUnit/NUnit)</span>
+                <span class="skill-item">CI/CD basics</span>
+            </div>
+        </section>
 
-            <footer class="card-footer">
-                <div class="small">© DEBORA J ROY — <a href="https://deborajroy.in" target="_blank">deborajroy.in</a></div>
-                <div class="small">Last updated: <span id="updated">--</span></div>
-            </footer>
+        <!-- Professional Experience -->
+        <section class="mb-8">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline-item">
+                <h3 class="font-semibold text-gray-200">Software Engineer — PlayOn 24 (Dhaka)</h3>
+                <p class="text-gray-400 italic">Oct 2024 – Present</p>
+                <ul class="list-disc pl-5 text-gray-300">
+                    <li>Designed and implemented backend APIs in ASP.NET Core (NET 8) for client websites, following RESTful conventions and layered architecture.</li>
+                    <li>Introduced Docker-based local dev workflows and simplified deployment processes, reducing environment setup time by ~30%.</li>
+                    <li>Collaborated with frontend team on Angular integrations and improved API error handling and logging for faster issue resolution.</li>
+                    <li><span class="font-semibold">Technologies:</span> ASP.NET Core, C#, Docker, SQL Server, Angular.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3 class="font-semibold text-gray-200">Server Engineer (Intern) — Bengal Software</h3>
+                <p class="text-gray-400 italic">Aug 2022 – Jan 2023</p>
+                <ul class="list-disc pl-5 text-gray-300">
+                    <li>Supported server deployments and application troubleshooting on Linux hosting environments; handled backups and basic performance tuning.</li>
+                    <li>Assisted in migrating legacy website components to modern ASP.NET Core endpoints.</li>
+                    <li><span class="font-semibold">Technologies:</span> cPanel, Linux, ASP.NET Core.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="mb-8">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-item">
+                <h3 class="font-semibold text-gray-200">ASP.NET-Core-Microservices</h3>
+                <p class="text-gray-400"><a href="#" class="hover:text-purple-400">[GitHub link / Live]</a></p>
+                <ul class="list-disc pl-5 text-gray-300">
+                    <li>Built a microservices-style demo using ASP.NET Core (.NET 8), separated concerns into API and worker services, and served the site via Cloudflare Workers (live). Implemented CI-friendly Docker images.</li>
+                    <li><span class="font-semibold">Role:</span> Backend design, API development, Dockerization.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <h3 class="font-semibold text-gray-200">Library Management System — SPA</h3>
+                <p class="text-gray-400"><a href="#" class="hover:text-purple-400">[GitHub link / Live]</a></p>
+                <ul class="list-disc pl-5 text-gray-300">
+                    <li>Full-stack SPA using ASP.NET Core backend and Angular frontend. Implemented JWT-based auth and dynamic role-based access.</li>
+                    <li><span class="font-semibold">Role:</span> End-to-end implementation, REST APIs, database modeling.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <h3 class="font-semibold text-gray-200">eTicket eCommerce</h3>
+                <p class="text-gray-400"><a href="#" class="hover:text-purple-400">[GitHub link / Live]</a></p>
+                <ul class="list-disc pl-5 text-gray-300">
+                    <li>eCommerce web app with product catalog, cart, and checkout flows using ASP.NET Core MVC (NET 7).</li>
+                    <li><span class="font-semibold">Role:</span> Core backend features, payment flow integration, and deployment.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="mb-8">
+            <h2 class="section-title">Education</h2>
+            <div>
+                <h3 class="font-semibold text-gray-200">BSc in Computer Science & Engineering — AIUB</h3>
+                <p class="text-gray-400 italic">Jan 2019 – Dec 2022</p>
+                <p class="text-gray-300">CGPA: 3.65 / 4.00</p>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="mb-8">
+            <h2 class="section-title">Certifications</h2>
+            <ul class="list-disc pl-5 text-gray-300">
+                <li>Full Stack ASP.NET Core MVC Web Development — DevSkill (2024)</li>
+                <li>Professional Programming with C# — DevSkill (2023)</li>
+                <li>AWS Services for Solutions Architect Associate — Udemy (2022)</li>
+            </ul>
+        </section>
+
+        <!-- Additional -->
+        <section>
+            <h2 class="section-title">Additional</h2>
+            <p class="text-gray-300"><span class="font-semibold">Languages:</span> English (Professional), Bengali (Native)</p>
+            <p class="text-gray-300"><span class="font-semibold">Interests:</span> Competitive programming, photography, chess</p>
+        </section>
+
+        <!-- Download Button -->
+        <div class="text-center no-print mt-8">
+            <a href="javascript:window.print()" class="download-btn">Download as PDF</a>
         </div>
     </div>
-
-    <script>
-        // Small helpers
-        document.getElementById('updated').textContent = new Date().toLocaleDateString();
-        function copyContact(){
-            const text = 'Debora J Roy\nEmail: deborajroy.in@gmail.com\nPhone: +8801708119559\nGitHub: https://github.com/Deboraj-roy';
-            navigator.clipboard?.writeText(text).then(()=> alert('Contact copied to clipboard'));
-        }
-    </script>
 </body>
 </html>
