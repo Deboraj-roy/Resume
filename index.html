@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,25 +19,44 @@
             --dark: #1e293b;
             --light: #f8fafc;
             --gray: #64748b;
+            --bg-gradient-start: #667eea;
+            --bg-gradient-end: #764ba2;
+            --container-bg: white;
+            --text-color: #1e293b;
+        }
+
+        [data-theme="dark"] {
+            --primary: #60a5fa;
+            --secondary: #a78bfa;
+            --accent: #22d3ee;
+            --dark: #f8fafc;
+            --light: #1e293b;
+            --gray: #94a3b8;
+            --bg-gradient-start: #1e293b;
+            --bg-gradient-end: #0f172a;
+            --container-bg: #0f172a;
+            --text-color: #f8fafc;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             min-height: 100vh;
             padding: 2rem 1rem;
+            transition: all 0.3s ease;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: var(--container-bg);
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
             animation: fadeIn 0.8s ease-in;
+            transition: background 0.3s ease;
         }
 
         @keyframes fadeIn {
@@ -334,6 +353,37 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* ATS Print Styles */
+        .ats-print-content {
+            display: none;
+        }
+
         @media print {
             body {
                 background: white;
@@ -342,12 +392,70 @@
             .container {
                 box-shadow: none;
                 border-radius: 0;
+                display: none;
             }
-            .print-button {
+            .print-button, .theme-toggle {
                 display: none;
             }
             .section {
                 page-break-inside: avoid;
+            }
+            
+            .ats-print-content {
+                display: block !important;
+                font-family: Arial, sans-serif;
+                font-size: 11pt;
+                line-height: 1.4;
+                color: #000;
+                max-width: 8.5in;
+                margin: 0 auto;
+                padding: 0.5in;
+            }
+            
+            .ats-print-content h1 {
+                font-size: 18pt;
+                margin-bottom: 0.2in;
+                text-align: center;
+                font-weight: bold;
+            }
+            
+            .ats-print-content .ats-contact {
+                text-align: center;
+                font-size: 10pt;
+                margin-bottom: 0.15in;
+            }
+            
+            .ats-print-content h2 {
+                font-size: 12pt;
+                font-weight: bold;
+                border-bottom: 1px solid #000;
+                margin-top: 0.15in;
+                margin-bottom: 0.1in;
+                text-transform: uppercase;
+            }
+            
+            .ats-print-content .ats-job {
+                margin-bottom: 0.15in;
+            }
+            
+            .ats-print-content .ats-job-header {
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                margin-bottom: 0.05in;
+            }
+            
+            .ats-print-content ul {
+                margin: 0.05in 0 0.1in 0.2in;
+                padding: 0;
+            }
+            
+            .ats-print-content li {
+                margin-bottom: 0.03in;
+            }
+            
+            .ats-print-content p {
+                margin: 0.05in 0;
             }
         }
 
@@ -370,7 +478,7 @@
         <header class="header">
             <div class="profile-section">
                 <img src="avater.jpg" alt="Debora J Roy" class="profile-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22150%22%3E%3Crect fill=%22%234f46e5%22 width=%22150%22 height=%22150%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2260%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22%3EDR%3C/text%3E%3C/svg%3E'">
-                <h1>DEBORA J ROY</h1>
+                <h1>DEBORAJ ROY</h1>
                 <p class="title">Senior ASP.NET Core Developer</p>
                 <div class="contact-info">
                     <a href="mailto:deborajroy.in@gmail.com"><i class="fas fa-envelope"></i> deborajroy.in@gmail.com</a>
@@ -560,11 +668,129 @@
         </div>
     </div>
 
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
     <button class="print-button" onclick="window.print()">
         <i class="fas fa-print"></i> Print / Save PDF
     </button>
 
+    <!-- ATS-Friendly Print Content -->
+    <div class="ats-print-content">
+        <h1>DEBORAJ ROY</h1>
+        <div class="ats-contact">
+            Email: deborajroy.in@gmail.com | Phone: +8801708119559<br>
+            GitHub: github.com/Deboraj-roy | LinkedIn: linkedin.com/in/deboraj-roy
+        </div>
+
+        <h2>SUMMARY</h2>
+        <p>Senior ASP.NET Core Developer with hands-on experience in .NET 8, C#, ASP.NET Core MVC/Web API, and Angular. Built microservices and full-stack applications deployed with Docker and cloud services. Strong focus on performance, clean architecture, and delivering business value. Seeking a Senior Software Engineer role to build scalable systems and mentor teams.</p>
+
+        <h2>TECHNICAL SKILLS</h2>
+        <p><strong>Languages & Frameworks:</strong> C#, .NET 8, ASP.NET Core, Entity Framework Core, LINQ</p>
+        <p><strong>Frontend:</strong> Angular, TypeScript, HTML5, CSS3, JavaScript</p>
+        <p><strong>Databases:</strong> SQL Server, MySQL, Oracle (basic)</p>
+        <p><strong>Cloud & DevOps:</strong> AWS (S3/EC2 basics), Docker, cPanel, Azure (familiar)</p>
+        <p><strong>Tools:</strong> Visual Studio, SQL Server Management Studio, Git, TortoiseGit, Docker</p>
+        <p><strong>Other:</strong> RESTful APIs, JWT/OAuth2, Microservices, Unit Testing (xUnit/NUnit), CI/CD basics</p>
+
+        <h2>PROFESSIONAL EXPERIENCE</h2>
+        <div class="ats-job">
+            <div class="ats-job-header">
+                <span><strong>Software Engineer</strong> — PlayOn 24 (Dhaka)</span>
+                <span>Oct 2024 – Present</span>
+            </div>
+            <ul>
+                <li>Designed and implemented backend APIs in ASP.NET Core (.NET 8) for client websites, following RESTful conventions and layered architecture.</li>
+                <li>Introduced RDS local dev workflows and simplified deployment processes, reducing environment setup time.</li>
+                <li>Collaborated with frontend team on Angular integrations and improved API error handling and logging for faster issue resolution.</li>
+                <li>Technologies: ASP.NET Core, C#, SQL Server, Angular.</li>
+            </ul>
+        </div>
+
+        <div class="ats-job">
+            <div class="ats-job-header">
+                <span><strong>Server Engineer (Intern)</strong> — Bengal Software</span>
+                <span>Aug 2022 – Jan 2023</span>
+            </div>
+            <ul>
+                <li>Supported server deployments and application troubleshooting on Linux hosting environments; handled backups and basic performance tuning.</li>
+                <li>Assisted in migrating legacy website components to modern ASP.NET Core endpoints.</li>
+                <li>Technologies: cPanel, Linux, ASP.NET Core.</li>
+            </ul>
+        </div>
+
+        <h2>PROJECTS (SELECTED)</h2>
+        <div class="ats-job">
+            <p><strong>ASP.NET-Core-Microservices</strong> — <a href="https://github.com/Deboraj-roy/ASP.NET-Core-Microservices-NET-8" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            <ul>
+                <li>Built a microservices-style demo using ASP.NET Core (.NET 8), separated concerns into API and worker services, and served the site via Cloudflare Workers (live). Implemented CI-friendly Docker images.</li>
+                <li>Role: Backend design, API development, Dockerization.</li>
+            </ul>
+        </div>
+
+        <div class="ats-job">
+            <p><strong>Library Management System — SPA</strong>— <a href="https://github.com/Deboraj-roy/Library-Management-System-SinglePage" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            <ul>
+                <li>Full-stack SPA using ASP.NET Core backend and Angular frontend. Implemented JWT-based auth and dynamic role-based access.</li>
+                <li>Role: End-to-end implementation, REST APIs, database modeling.</li>
+            </ul>
+        </div>
+
+        <div class="ats-job">
+            <p><strong>eTicket eCommerce</strong>— <a href="https://github.com/Deboraj-roy/Complete-ecommerce-ASP.NET-MVC-eTicket-Application" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            <ul>
+                <li>eCommerce web app with product catalog, cart, and checkout flows using ASP.NET Core MVC (.NET 7).</li>
+                <li>Role: Core backend features, payment flow integration, and deployment.</li>
+            </ul>
+        </div>
+
+        <h2>EDUCATION</h2>
+        <p><strong>BSc in Computer Science & Engineering</strong> — AIUB &nbsp;&nbsp;&nbsp; Jan 2019 – Dec 2022<br>
+        CGPA: 3.65 / 4.00</p>
+
+        <h2>CERTIFICATIONS</h2>
+        <ul>
+            <li>Full Stack ASP.NET Core MVC Web Development — DevSkill (2024)</li>
+            <li>Professional Programming with C# — DevSkill (2023)</li>
+            <li>AWS Services for Solutions Architect Associate — Udemy (2022)</li>
+        </ul>
+
+        <h2>ADDITIONAL</h2>
+        <p><strong>Languages:</strong> English (Professional), Bengali (Native)</p>
+        <p><strong>Interests:</strong> Competitive programming, photography, chess</p>
+    </div>
+
     <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = html.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                html.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+            }
+        });
+
         // Smooth scroll animation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
