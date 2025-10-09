@@ -1,238 +1,187 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Deboraj Roy's Resume</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Debora J Roy — Resume</title>
+    <meta name="description" content="Resume of Debora J Roy — Senior ASP.NET Core Developer">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--accent:#0f766e;--muted:#6b7280;--bg:#f8fafc;--card:#ffffff}
+        *{box-sizing:border-box}
+        html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#0f172a}
+        a{color:var(--accent);text-decoration:none}
+        .wrap{max-width:1000px;margin:32px auto;padding:24px}
+        .card{background:var(--card);border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.08);overflow:hidden}
+        .grid{display:grid;grid-template-columns:320px 1fr}
+        header{display:flex;gap:16px;padding:24px}
+        .avatar{width:120px;height:120px;border-radius:12px;object-fit:cover;border:2px solid rgba(15,118,110,0.12)}
+        .name {display:flex;flex-direction:column;justify-content:center}
+        .name h1{margin:0;font-size:1.6rem;letter-spacing:0.4px}
+        .meta{color:var(--muted);font-size:0.95rem;margin-top:6px}
+        .contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+        .pill{background:#eef2f2;color:#0f172a;padding:6px 10px;border-radius:999px;font-weight:600;font-size:0.9rem}
+        main{padding:24px 24px 32px}
+        section{margin-bottom:20px}
+        h2.section-title{margin:0 0 12px 0;color:var(--accent);font-size:1.05rem}
+        .summary{color:var(--muted);line-height:1.5}
+        .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+        ul.skills{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+        ul.skills li{background:#f1f5f4;padding:6px 10px;border-radius:999px;font-size:0.9rem;color:#064e48}
+        .experience .item{margin-bottom:14px}
+        .item .role{font-weight:600}
+        .item .meta{color:var(--muted);font-size:0.9rem;margin-bottom:6px}
+        .projects li{margin-bottom:10px}
+        .small{font-size:0.9rem;color:var(--muted)}
+        footer.card-footer{background:#fff;padding:14px 24px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center}
+        .actions{display:flex;gap:8px}
+        button.btn{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+        button.ghost{background:#eef2f2;color:var(--accent)}
 
-.container {
-  font-family: Arial, sans-serif;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-}
+        /* Responsive */
+        @media (max-width:880px){.grid{grid-template-columns:1fr}.wrap{margin:12px}}
 
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.skills .skill-tags,
-.interests .interest-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skill-tags span,
-.interest-tags span {
-  background-color: #e0e0e0;
-  color: #333;
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-}
-
-.languages .language-list div {
-  margin-bottom: 10px;
-}
-
-.languages .language-list p {
-  margin: 0;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.languages .language-list span {
-  display: block;
-  font-size: 0.85rem;
-  color: #666;
-}
-
-.interests .interest-tags span {
-  border: 1px solid #ccc;
-  background-color: #fff;
-}
-
-  .section-title {
-        color: teal;
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        border-bottom: 2px solid teal;
-        padding-bottom: 5px;
-    }
-    .projects-list, .certificates-list {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-    }
-    .projects-list li, .certificates-list li {
-        margin-bottom: 15px;
-    }
-    .projects-list a, .certificates-list a {
-        color: teal;
-        text-decoration: none;
-    }
-    .projects-list a:hover, .certificates-list a:hover {
-        text-decoration: underline;
-    }
-
-
-</style>
+        /* Print */
+        @media print{body{background:#fff} .wrap{box-shadow:none} button, .actions {display:none}}
+    </style>
 </head>
-<body class="w3-light-grey">
-  <!-- Page Container -->
-  <div class="w3-content w3-margin-top" style="max-width:1400px;">
-    <!-- The Grid -->
-    <div class="w3-row-padding">
-        <!-- Left Column -->
-        <div class="w3-third">
-            <div class="w3-white w3-text-grey w3-card-4">
-                <div class="w3-display-container">
-                    <img src="avater.jpg" style="width:100%" alt="Avatar">
-                    <div class="w3-display-bottomleft w3-container w3-text-black">
-                        <h2 style="color: green">DEBORAJ ROY</h2>
-                    </div>
-                </div>
-
-                <div class="w3-container">
-                    <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>SOFTWARE ENGINEER</p>
-                    <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Mohammadpur, Dhaka</p>
-                    <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>deborajroy123@gmail.com</p>
-                    <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>+8801708119559</p>  
-                    <p><a href="https://github.com/Deboraj-roy"><i class="fa fa-github fa-fw w3-margin-right w3-large w3-text-teal"></a></i>GitHub Profile</p>  
-                    <hr>
-
-                    <h3 class="w3-text-grey w3-padding-14"><i class="fa fa-code fa-fw w3-margin-right w3-large w3-text-teal"></i>Skills</h3>
-                    <div class="w3-container">
-                        <p>ASP .NET Core, Git, Azure Deployment, Angular, C#, cPanel, LaTeX, Linux, Cloud Computing with AWS, HTML/CSS, Competitive Programming</p>
+<body>
+    <div class="wrap">
+        <div class="card">
+            <div class="grid">
+                <!-- Left column (sidebar) -->
+                <aside style="padding:20px;border-right:1px solid #f1f5f9">
+                    <div style="text-align:center">
+                        <img src="avater.jpg" alt="Debora J Roy" class="avatar">
+                        <div style="margin-top:12px">
+                            <h3 style="margin:6px 0">DEBORA J ROY</h3>
+                            <div class="small">Senior ASP.NET Core Developer</div>
+                        </div>
                     </div>
 
-                    <h3 class="w3-text-grey w3-padding-14"><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal"></i>Education</h3>
-                    <div class="w3-container">
-                        <p><strong>American International University-Bangladesh</strong><br>2019 - 2022<br>Bachelor of Science in Computer Science & Engineering</p>
-                        <p><strong>Sunflower School & College, Saidpur, Nilphamari</strong><br>2015 - 2016<br>Higher Secondary Certificate</p>
-                        <p><strong>Kishoreganj Model M.L High School, Kishoreganj, Nilphamari</strong><br>2013 - 2014<br>Secondary School Certificate</p>
-                        <p><strong>Lions School & College, Saidpur</strong><br>2007 - 2012<br>Junior School Certificate</p>
+                    <div style="margin-top:18px">
+                        <h4 class="section-title">Contact</h4>
+                        <div class="small">
+                            <div>Email: <a href="mailto:deborajroy.in@gmail.com">deborajroy.in@gmail.com</a></div>
+                            <div>Phone: <a href="tel:+8801708119559">+8801708119559</a></div>
+                            <div>GitHub: <a href="https://github.com/Deboraj-roy" target="_blank">github.com/Deboraj-roy</a></div>
+                            <div>LinkedIn: <a href="https://www.linkedin.com/in/deboraj-roy-a725731a2" target="_blank">linkedin.com/in/deboraj-roy</a></div>
+                            <div>Portfolio: <a href="https://deborajroy.in" target="_blank">deborajroy.in</a></div>
+                        </div>
                     </div>
 
-                    <h3 class="w3-text-grey w3-padding-14"><i class="fa fa-language fa-fw w3-margin-right w3-large w3-text-teal"></i>Languages</h3>
-                    <div class="w3-container">
-                        <p>English: Full Professional Proficiency</p>
-                        <p>Bangla: Native or Bilingual Proficiency</p>
+                    <div style="margin-top:16px">
+                        <h4 class="section-title">Skills</h4>
+                        <ul class="skills">
+                            <li>C#</li><li>.NET 8</li><li>ASP.NET Core</li><li>Entity Framework</li><li>Angular</li>
+                            <li>TypeScript</li><li>SQL Server</li><li>Docker</li><li>AWS</li>
+                        </ul>
                     </div>
 
-                    <h3 class="w3-text-grey w3-padding-14"><i class="fa fa-star fa-fw w3-margin-right w3-large w3-text-teal"></i>Interests</h3>
-                    <div class="w3-container">
-                        <p>Photography, Travelling/Exploring, Chess</p>
+                    <div style="margin-top:16px">
+                        <h4 class="section-title">Languages</h4>
+                        <div class="small">English (Professional), Bengali (Native)</div>
                     </div>
-                </div>
-            </div><br>
-        </div>
 
-        <!-- Right Column -->
-        <div class="w3-twothird">
-            <!-- Work Experience -->
-            <div class="w3-container w3-card w3-white w3-margin-bottom">
-                <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Work Experience</h3>
-                <div class="w3-container">
-                    <h5 class="w3-opacity"><b>SOFTWARE ENGINEER</b></h5>
-                    <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2024 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-                    <p>Currently working at PlayOn24, developing and deploying reliable applications using .NET technologies and honing full-stack development skills.</p>
-                    <hr>
-                </div>
-                <div class="w3-container">
-                    <h5 class="w3-opacity"><b>Server Engineer at Bengal Software</b></h5>
-                    <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2022 - Jan 2023</h6>
-                    <p>Managed AWS services, deployed MERN and Laravel projects, implemented load balancing and auto-scaling, and ensured system performance and security.</p>
-                    <hr>
-                </div>
+                    <div style="margin-top:16px">
+                        <h4 class="section-title">Interests</h4>
+                        <div class="small">Competitive programming, photography, chess</div>
+                    </div>
+                </aside>
+
+                <!-- Right column (main) -->
+                <main>
+                    <header style="display:flex;align-items:flex-start;justify-content:space-between">
+                        <div style="flex:1">
+                            <p class="summary">Senior ASP.NET Core Developer with hands-on experience in .NET 8, C#, ASP.NET Core MVC/Web API, and Angular. Built microservices and full-stack applications deployed with Docker and cloud services. Strong focus on performance, clean architecture, and delivering business value. Seeking a Senior Software Engineer role to build scalable systems and mentor teams.</p>
+                        </div>
+                        <div class="actions">
+                            <button class="btn" onclick="window.print()">Print / Save PDF</button>
+                            <button class="btn ghost" onclick="copyContact()">Copy Contact</button>
+                        </div>
+                    </header>
+
+                    <section class="experience">
+                        <h2 class="section-title">Professional Experience</h2>
+                        <div class="item">
+                            <div class="role">Software Engineer — PlayOn 24 (Dhaka)</div>
+                            <div class="meta">Oct 2024 – Present</div>
+                            <ul>
+                                <li>Designed and implemented backend APIs in ASP.NET Core (.NET 8) for client websites, following RESTful conventions and layered architecture.</li>
+                                <li>Introduced Docker-based local dev workflows and simplified deployment processes, reducing environment setup time and making CI-friendly Docker images.</li>
+                                <li>Collaborated with frontend team on Angular integrations and improved API error handling and logging for faster issue resolution.</li>
+                            </ul>
+                            <div class="small">Technologies: ASP.NET Core, C#, Docker, SQL Server, Angular</div>
+                        </div>
+
+                        <div class="item">
+                            <div class="role">Server Engineer (Intern) — Bengal Software</div>
+                            <div class="meta">Aug 2022 – Jan 2023</div>
+                            <ul>
+                                <li>Supported server deployments and application troubleshooting on Linux hosting environments; handled backups and basic performance tuning.</li>
+                                <li>Assisted in migrating legacy website components to modern ASP.NET Core endpoints.</li>
+                            </ul>
+                            <div class="small">Technologies: cPanel, Linux, ASP.NET Core</div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="section-title">Selected Projects</h2>
+                        <ul class="projects">
+                            <li>
+                                <strong>ASP.NET-Core-Microservices</strong> — Built a microservices-style demo using ASP.NET Core (.NET 8), separated concerns into API and worker services, and served the site via Cloudflare Workers (live). Implemented CI-friendly Docker images. (Repo + Live)
+                            </li>
+                            <li>
+                                <strong>Library Management System — SPA</strong> — Full-stack SPA using ASP.NET Core backend and Angular frontend. Implemented JWT-based auth and dynamic role-based access. (GitHub + Live)
+                            </li>
+                            <li>
+                                <strong>eTicket eCommerce</strong> — eCommerce web app with product catalog, cart, and checkout flows using ASP.NET Core MVC (.NET 7). Role: Core backend features and deployment. (GitHub + Live)
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="section-title">Education & Certifications</h2>
+                        <div style="display:flex;flex-direction:column;gap:10px">
+                            <div>
+                                <strong>BSc in Computer Science & Engineering — AIUB</strong>
+                                <div class="small">Jan 2019 – Dec 2022 · CGPA: 3.65 / 4.00</div>
+                            </div>
+
+                            <div>
+                                <strong>Certifications</strong>
+                                <ul class="small">
+                                    <li>Full Stack ASP.NET Core MVC Web Development — DevSkill (2024)</li>
+                                    <li>Professional Programming with C# — DevSkill (2023)</li>
+                                    <li>AWS Services for Solutions Architect Associate — Udemy (2022)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="section-title">Additional</h2>
+                        <div class="small">
+                            Languages: English (Professional), Bengali (Native). Interests: Competitive programming, photography, chess.
+                        </div>
+                    </section>
+                </main>
             </div>
 
-            <!-- Projects -->
-            <div class="w3-container w3-card w3-white w3-margin-bottom">
-                <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-folder-open fa-fw w3-margin-right w3-large w3-text-teal"></i>Projects</h3>
-                <div class="w3-container w3-text-grey">
-                    <p><strong>eTicket system - eCommerce</strong><br>
-                    <a href="https://github.com/Deboraj-roy/Complete-ecommerce-ASP.NET-MVC-eTicket-Application.git">GitHub</a> |
-                    <a href="https://reyib6159.bsite.net/">Live Project</a><br>
-                    Using ASP.NET Core MVC (.NET 7), HTML, CSS, JavaScript</p>
-
-                    <p><strong>RESTful-API-with-.NET-Core</strong><br>
-                    <a href="https://github.com/Deboraj-roy/RESTful-API-with-.NET-Core.git">GitHub</a> |
-                    <a href="https://aubreeazure.bsite.net/swagger/index.html">Live Project</a><br>
-                    Using ASP.NET Core MVC (.NET 8), CSS, JavaScript</p>
-
-                    <p><strong>Book Store - eCommerce</strong><br>
-                    <a href="https://github.com/Deboraj-roy/ASP.NET-Core-MVC-NET-8">GitHub</a> |
-                    <a href="https://plumwillyt.bsite.net/">Live Project</a><br>
-                    Using ASP.NET Core MVC (.NET 8), HTML, CSS, JavaScript</p>
-                </div>
-            </div>
-
-            <!-- Achievements and Certificates -->
-            <div class="w3-container w3-card w3-white">
-                <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-trophy fa-fw w3-margin-right w3-large w3-text-teal"></i>Achievements and Certificates</h3>
-                <div class="w3-container w3-text-grey">
-                    <p><strong>The GOLD STANDARD of The Duke of Edinburgh's International Award</strong></br>
-                    <span>(01/2022)</span><br>
-                    <a href="https://i.ibb.co/BckjbQr/1686639097356.jpg">The GOLD STANDARD of The Duke of Edinburgh's
-                        International Award
-                    </a>
-                    </p>
-
-                    <p><strong>Full Stack ASP.NET Core MVC Web Development</strong><br>
-                    <span>(09/2023 - 04/2024)</span><br>
-                    <a hidden href="https://devskill.com/certificate/s67wjgjyampbvb">Certificate Link</a></p>
-
-                    <p><strong>Professional Programming with C#</strong><br>
-                    <span>(01/2023 - 04/2023)</span><br>
-                    <a href="https://devskill.com/Certificate/567/wgijyqmbpvb">Certificate Link</a></p>
-
-                    <p><strong>ASP.NET Core MVC | Build a Complete eCommerce App</strong><br>
-                    <span>(01/2024)</span><br>
-                    <a href="https://www.udemy.com/certificate/UC-0bf7939d-d0a8-4b9f-b6aa-670b692b9cc8">Certificate Link</a></p>
-
-                    <p><strong>AWS Services for Solutions Architect Associate</strong><br>
-                    <span>(11/2022)</span><br>
-                    <a href="https://www.udemy.com/certificate/UC-2809698b-6731-4a23-a920-4c19bfb1c4e8/">Certificate Link</a></p>
-                </div>
-            </div>
+            <footer class="card-footer">
+                <div class="small">© DEBORA J ROY — <a href="https://deborajroy.in" target="_blank">deborajroy.in</a></div>
+                <div class="small">Last updated: <span id="updated">--</span></div>
+            </footer>
         </div>
     </div>
-</div>
 
-<footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Find me on social media.</p>
- 
-  <a onclick="window.open('https://www.facebook.com/deborajjj')" alt="deborajjj">
-  <i class="fa fa-facebook-official w3-hover-opacity"></i> </a>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <a onclick="window.open('https://twitter.com/deboraj_roy')" alt="deboraj_roy"><i class="fa fa-twitter w3-hover-opacity"></i> </a>
-  <a onclick="window.open('https://www.linkedin.com/in/deboraj-roy-a725731a2')" alt="deboraj-roy-a725731a2"><i class="fa fa-linkedin w3-hover-opacity"></i> </a>
- 
-  <h5>Resume © by DEBORAJ ROY</h5>
-<h5><pre>You can contact with me (01708119559) <?php echo date('d-m-Y');  ?></pre></h5>
-<body>
-	<p id="a"></p>
-	<script>
-		
-		setInterval(function(){
-			document.getElementById("a").innerHTML = new Date();
-		}, 1000);
-	</script>
-</body>
-  
-</footer>
-
+    <script>
+        // Small helpers
+        document.getElementById('updated').textContent = new Date().toLocaleDateString();
+        function copyContact(){
+            const text = 'Debora J Roy\nEmail: deborajroy.in@gmail.com\nPhone: +8801708119559\nGitHub: https://github.com/Deboraj-roy';
+            navigator.clipboard?.writeText(text).then(()=> alert('Contact copied to clipboard'));
+        }
+    </script>
 </body>
 </html>
