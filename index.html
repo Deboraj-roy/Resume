@@ -1,816 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deboraj Roy - ASP.NET Core Developer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #2563eb;
-            --secondary: #7c3aed;
-            --accent: #06b6d4;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --bg-gradient-start: #667eea;
-            --bg-gradient-end: #764ba2;
-            --container-bg: white;
-            --text-color: #1e293b;
-        }
-
-        [data-theme="dark"] {
-            --primary: #60a5fa;
-            --secondary: #a78bfa;
-            --accent: #22d3ee;
-            --dark: #9199a0;
-            --light: #1e293b;
-            --gray: #94a3b8;
-            --bg-gradient-start: #1e293b;
-            --bg-gradient-end: #0f172a;
-            --container-bg: #0f172a;
-            --text-color: #616569;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: var(--container-bg);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-            animation: fadeIn 0.8s ease-in;
-            transition: background 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 15s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .profile-section {
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .header .title {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            transform: translateY(-3px);
-        }
-
-        .content {
-            padding: 2rem;
-        }
-
-        .section {
-            margin-bottom: 2.5rem;
-            animation: slideIn 0.6s ease-out;
-            animation-fill-mode: both;
-        }
-
-        .section:nth-child(1) { animation-delay: 0.1s; }
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.3s; }
-        .section:nth-child(4) { animation-delay: 0.4s; }
-        .section:nth-child(5) { animation-delay: 0.5s; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--accent);
-            display: inline-block;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 50%;
-            height: 3px;
-            background: var(--secondary);
-        }
-
-        .summary {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--gray);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, #d7dadd 0%, #c6cacf 100%);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .skill-category p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        .experience-item, .project-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #c4cac7;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover, .project-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .experience-header, .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .job-title, .project-title {
-            font-size: 1.3rem;
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        .company, .project-links {
-            color: var(--secondary);
-            font-weight: 500;
-        }
-
-        .date {
-            color: var(--gray);
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
-        .experience-item ul, .project-item ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .experience-item li, .project-item li {
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            color: var(--gray);
-        }
-
-        .experience-item li::before, .project-item li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tech-tag {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .education-item, .cert-item {
-            background: #d5dadf;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--secondary);
-        }
-
-        .degree {
-            font-size: 1.2rem;
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        .institution {
-            color: var(--secondary);
-            font-weight: 500;
-        }
-
-        .additional-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .additional-box {
-            background: linear-gradient(135deg, #d8dbdf 0%, #e2e8f0 100%);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-top: 4px solid var(--accent);
-        }
-
-        .additional-box h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .print-button {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .print-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            width: 60px;
-            height: 60px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .theme-toggle:hover {
-            transform: rotate(180deg) scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        /* ATS Print Styles */
-        .ats-print-content {
-            display: none;
-        }
-
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .container {
-                box-shadow: none;
-                border-radius: 0;
-                display: none;
-            }
-            .print-button, .theme-toggle {
-                display: none;
-            }
-            .section {
-                page-break-inside: avoid;
-            }
-            
-            .ats-print-content {
-                display: block !important;
-                font-family: Arial, sans-serif;
-                font-size: 11pt;
-                line-height: 1.4;
-                color: #000;
-                max-width: 8.5in;
-                margin: 0 auto;
-                padding: 0.5in;
-            }
-            
-            .ats-print-content h1 {
-                font-size: 18pt;
-                margin-bottom: 0.2in;
-                text-align: center;
-                font-weight: bold;
-            }
-            
-            .ats-print-content .ats-contact {
-                text-align: center;
-                font-size: 10pt;
-                margin-bottom: 0.15in;
-            }
-            
-            .ats-print-content h2 {
-                font-size: 12pt;
-                font-weight: bold;
-                border-bottom: 1px solid #000;
-                margin-top: 0.15in;
-                margin-bottom: 0.1in;
-                text-transform: uppercase;
-            }
-            
-            .ats-print-content .ats-job {
-                margin-bottom: 0.15in;
-            }
-            
-            .ats-print-content .ats-job-header {
-                display: flex;
-                justify-content: space-between;
-                font-weight: bold;
-                margin-bottom: 0.05in;
-            }
-            
-            .ats-print-content ul {
-                margin: 0.05in 0 0.1in 0.2in;
-                padding: 0;
-            }
-            
-            .ats-print-content li {
-                margin-bottom: 0.03in;
-            }
-            
-            .ats-print-content p {
-                margin: 0.05in 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            .contact-info {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .experience-header, .project-header {
-                flex-direction: column;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deboraj Roy — Software Engineer | ASP.NET Core & Enterprise ERP</title>
+  <meta name="description" content="Software Engineer specializing in ASP.NET Core, C#, Angular, and enterprise ERP systems. Based in Dhaka, Bangladesh.">
+  <meta property="og:title" content="Deboraj Roy — Software Engineer">
+  <meta property="og:description" content="ASP.NET Core & Enterprise ERP Engineer — 10+ client deployments, microservices, full-stack systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deboraj.me">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="profile-section">
-                <img src="avater.jpg" alt="Deboraj Roy" class="profile-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22150%22%3E%3Crect fill=%22%234f46e5%22 width=%22150%22 height=%22150%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2260%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22%3EDR%3C/text%3E%3C/svg%3E'">
-                <h1>DEBORAJ ROY</h1>
-                <p class="title">ASP.NET Core Developer</p>
-                <div class="contact-info">
-                    <a href="mailto:deborajroy.in@gmail.com"><i class="fas fa-envelope"></i> deborajroy.in@gmail.com</a>
-                    <a href="tel:+8801708119559"><i class="fas fa-phone"></i> +880 1708 119559</a>
-                    <a href="https://github.com/Deboraj-roy" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="https://linkedin.com/in/deboraj-roy" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <!-- <a href="#" target="_blank"><i class="fas fa-globe"></i> Portfolio</a> -->
-                </div>
-            </div>
-        </header>
 
-        <div class="content">
-            <section class="section">
-                <h2 class="section-title"><i class="fas fa-user"></i> Summary</h2>
-                <p class="summary">ASP.NET Core Developer with hands-on experience in .NET 8, C#, ASP.NET Core MVC/Web API, and Angular. Built microservices and full-stack applications deployed with Docker and cloud services. Strong focus on performance, clean architecture, and delivering business value. Seeking a Senior Software Engineer role to build scalable systems and mentor teams.</p>
-            </section>
+  <div class="site-wrapper" id="cv-root">
+    <!-- Rendered by renderCV() below, from window.CV data in cv-print.js -->
+  </div>
 
-            <section class="section">
-                <h2 class="section-title"><i class="fas fa-code"></i> Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Languages & Frameworks</h3>
-                        <p>C#, .NET 8, ASP.NET Core, Entity Framework Core, LINQ</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Frontend</h3>
-                        <p>Angular, TypeScript, HTML5, CSS3, JavaScript</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Databases</h3>
-                        <p>SQL Server, MySQL, Oracle (basic)</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Cloud & DevOps</h3>
-                        <p>AWS (S3/EC2 basics), Docker, cPanel, Azure (familiar)</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Tools</h3>
-                        <p>Visual Studio, SQL Server Management Studio, Git, TortoiseGit, Docker</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Other</h3>
-                        <p>RESTful APIs, JWT/OAuth2, Microservices, Unit Testing (xUnit/NUnit), CI/CD basics</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-                
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="job-title">Software Engineer</div>
-                            <div class="company">PlayOn 24, Dhaka</div>
-                        </div>
-                        <div class="date">Oct 2024 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Designed and implemented backend APIs in ASP.NET Core (.NET 8) for client websites, following RESTful conventions and layered architecture</li>
-                        <li>Introduced Docker-based local dev workflows and simplified deployment processes, reducing environment setup time</li>
-                        <li>Collaborated with frontend team on Angular integrations and improved API error handling and logging for faster issue resolution</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tech-tag">ASP.NET Core</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">SQL Server</span>
-                        <span class="tech-tag">Angular</span>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="job-title">Server Engineer (Intern)</div>
-                            <div class="company">Bengal Software</div>
-                        </div>
-                        <div class="date">Aug 2022 – Jan 2023</div>
-                    </div>
-                    <ul>
-                        <li>Supported server deployments and application troubleshooting on Linux hosting environments; handled backups and basic performance tuning</li>
-                        <li>Assisted in migrating legacy website components to modern ASP.NET Core endpoints</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tech-tag">cPanel</span>
-                        <span class="tech-tag">Linux</span>
-                        <span class="tech-tag">ASP.NET Core</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title"><i class="fas fa-project-diagram"></i> Selected Projects</h2>
-                
-                <div class="project-item">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-title">ASP.NET Core Microservices</div>
-                            <div class="project-links"><i class="fab fa-github"></i> GitHub + Live Demo</div>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Built a microservices-style demo using ASP.NET Core (.NET 8), separated concerns into API and worker services, and served the site via Cloudflare Workers (live). Implemented CI-friendly Docker images</li>
-                        <li>Role: Backend design, API development, Dockerization</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tech-tag">.NET 8</span>
-                        <span class="tech-tag">Microservices</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">Cloudflare</span>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-title">Library Management System - SPA</div>
-                            <div class="project-links"><i class="fab fa-github"></i> GitHub + Live Demo</div>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Full-stack SPA using ASP.NET Core backend and Angular frontend. Implemented JWT-based auth and dynamic role-based access</li>
-                        <li>Role: End-to-end implementation, REST APIs, database modeling</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tech-tag">ASP.NET Core</span>
-                        <span class="tech-tag">Angular</span>
-                        <span class="tech-tag">JWT</span>
-                        <span class="tech-tag">SQL Server</span>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-title">eTicket eCommerce</div>
-                            <div class="project-links"><i class="fab fa-github"></i> GitHub + Live Demo</div>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>eCommerce web app with product catalog, cart, and checkout flows using ASP.NET Core MVC (.NET 7)</li>
-                        <li>Role: Core backend features, payment flow integration, and deployment</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tech-tag">ASP.NET Core MVC</span>
-                        <span class="tech-tag">.NET 7</span>
-                        <span class="tech-tag">eCommerce</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-                <div class="education-item">
-                    <div class="degree">BSc in Computer Science & Engineering</div>
-                    <div class="institution">American International University-Bangladesh (AIUB)</div>
-                    <div class="date">Jan 2019 – Dec 2022 | CGPA: 3.65 / 4.00</div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
-                <div class="cert-item">
-                    <div><strong>Full Stack ASP.NET Core MVC Web Development</strong> — DevSkill (2024)</div>
-                </div>
-                <div class="cert-item">
-                    <div><strong>Professional Programming with C#</strong> — DevSkill (2023)</div>
-                </div>
-                <div class="cert-item">
-                    <div><strong>AWS Services for Solutions Architect Associate</strong> — Udemy (2022)</div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title"><i class="fas fa-star"></i> Additional Information</h2>
-                <div class="additional-grid">
-                    <div class="additional-box">
-                        <h3>Languages</h3>
-                        <p>English (Professional), Bengali (Native)</p>
-                    </div>
-                    <div class="additional-box">
-                        <h3>Interests</h3>
-                        <p>Competitive programming, Photography, Chess</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
-        <i class="fas fa-moon" id="theme-icon"></i>
+  <div class="fab-group" role="group" aria-label="Page controls">
+    <button class="fab" id="theme-btn" title="Toggle dark mode" aria-label="Toggle dark mode" onclick="toggleTheme()">
+      <i class="fas fa-moon" id="theme-icon" aria-hidden="true"></i>
     </button>
-
-    <button class="print-button" onclick="window.print()">
-        <i class="fas fa-print"></i> Print / Save PDF
+    <button class="fab fab--print" title="Download / Print CV" aria-label="Print professional CV" onclick="generatePrintCV()">
+      <i class="fas fa-print" aria-hidden="true"></i>
     </button>
+  </div>
 
-    <!-- ATS-Friendly Print Content -->
-    <div class="ats-print-content">
-        <h1>DEBORAJ ROY</h1>
-        <div class="ats-contact">
-            Email: deborajroy.in@gmail.com | Phone: +8801708119559<br>
-            GitHub: github.com/Deboraj-roy | LinkedIn: linkedin.com/in/deboraj-roy
-        </div>
+  <!-- CV data object + print engine -->
+  <script src="cv-print.js"></script>
 
-        <h2>SUMMARY</h2>
-        <p>ASP.NET Core Developer with hands-on experience in .NET 8, C#, ASP.NET Core MVC/Web API, and Angular. Built microservices and full-stack applications deployed with Docker and cloud services. Strong focus on performance, clean architecture, and delivering business value. Seeking a Senior Software Engineer role to build scalable systems and mentor teams.</p>
+  <script>
+    /* ============================================================
+       ICON MAP — maps contact label to Font Awesome class
+    ============================================================ */
+    const ICONS = {
+      'deborajroy.in@gmail.com':          'fa-envelope',
+      '+880 1708 119559':                  'fa-phone',
+      'github.com/Deboraj-roy':            'fab fa-github',
+      'linkedin.com/in/deboraj-roy':       'fab fa-linkedin',
+      'codeforces.com/profile/DEBORAJ':    'fa-code',
+      'deboraj.me':                        'fa-globe',
+    };
 
-        <h2>TECHNICAL SKILLS</h2>
-        <p><strong>Languages & Frameworks:</strong> C#, .NET 8, ASP.NET Core, Entity Framework Core, LINQ</p>
-        <p><strong>Frontend:</strong> Angular, TypeScript, HTML5, CSS3, JavaScript</p>
-        <p><strong>Databases:</strong> SQL Server, MySQL, Oracle (basic)</p>
-        <p><strong>Cloud & DevOps:</strong> AWS (S3/EC2 basics), Docker, cPanel, Azure (familiar)</p>
-        <p><strong>Tools:</strong> Visual Studio, SQL Server Management Studio, Git, TortoiseGit, Docker</p>
-        <p><strong>Other:</strong> RESTful APIs, JWT/OAuth2, Microservices, Unit Testing (xUnit/NUnit), CI/CD basics</p>
+    /* ============================================================
+       SMALL DOM HELPER
+    ============================================================ */
+    function el(tag, cls, ...children) {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      children.forEach(c => {
+        if (c == null) return;
+        if (typeof c === 'string') e.appendChild(document.createTextNode(c));
+        else e.appendChild(c);
+      });
+      return e;
+    }
 
-        <h2>PROFESSIONAL EXPERIENCE</h2>
-        <div class="ats-job">
-            <div class="ats-job-header">
-                <span><strong>Software Engineer</strong> — PlayOn 24 (Dhaka)</span>
-                <span>Oct 2024 – Present</span>
-            </div>
-            <ul>
-                <li>Designed and implemented backend APIs in ASP.NET Core (.NET 8) for client websites, following RESTful conventions and layered architecture.</li>
-                <li>Introduced RDS local dev workflows and simplified deployment processes, reducing environment setup time.</li>
-                <li>Collaborated with frontend team on Angular integrations and improved API error handling and logging for faster issue resolution.</li>
-                <li>Technologies: ASP.NET Core, C#, SQL Server, Angular.</li>
-            </ul>
-        </div>
+    function secLabel(iconClass, text, id) {
+      const h2 = document.createElement('h2');
+      h2.className = 'section-label';
+      h2.id = id;
+      h2.innerHTML = `<i class="fas ${iconClass}" aria-hidden="true"></i> ${text}`;
+      return h2;
+    }
 
-        <div class="ats-job">
-            <div class="ats-job-header">
-                <span><strong>Server Engineer (Intern)</strong> — Bengal Software</span>
-                <span>Aug 2022 – Jan 2023</span>
-            </div>
-            <ul>
-                <li>Supported server deployments and application troubleshooting on Linux hosting environments; handled backups and basic performance tuning.</li>
-                <li>Assisted in migrating legacy website components to modern ASP.NET Core endpoints.</li>
-                <li>Technologies: cPanel, Linux, ASP.NET Core.</li>
-            </ul>
-        </div>
+    function tagRow(tags) {
+      const row = el('div', 'tag-row');
+      tags.forEach(t => row.appendChild(el('span', 'tag', t)));
+      return row;
+    }
 
-        <h2>PROJECTS (SELECTED)</h2>
-        <div class="ats-job">
-            <p><strong>ASP.NET-Core-Microservices</strong> — <a href="https://github.com/Deboraj-roy/ASP.NET-Core-Microservices-NET-8" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-            <ul>
-                <li>Built a microservices-style demo using ASP.NET Core (.NET 8), separated concerns into API and worker services, and served the site via Cloudflare Workers (live). Implemented CI-friendly Docker images.</li>
-                <li>Role: Backend design, API development, Dockerization.</li>
-            </ul>
-        </div>
+    function divider() {
+      const hr = document.createElement('hr');
+      hr.className = 'divider';
+      return hr;
+    }
 
-        <div class="ats-job">
-            <p><strong>Library Management System — SPA</strong>— <a href="https://github.com/Deboraj-roy/Library-Management-System-SinglePage" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-            <ul>
-                <li>Full-stack SPA using ASP.NET Core backend and Angular frontend. Implemented JWT-based auth and dynamic role-based access.</li>
-                <li>Role: End-to-end implementation, REST APIs, database modeling.</li>
-            </ul>
-        </div>
+    /* ============================================================
+       PORTFOLIO RENDERER
+       Reads window.CV (defined in cv-print.js) and builds
+       the visual portfolio DOM. Single source of truth.
+    ============================================================ */
+    function renderCV() {
+      const cv = window.CV;
+      const root = document.getElementById('cv-root');
 
-        <div class="ats-job">
-            <p><strong>eTicket eCommerce</strong>— <a href="https://github.com/Deboraj-roy/Complete-ecommerce-ASP.NET-MVC-eTicket-Application" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-            <ul>
-                <li>eCommerce web app with product catalog, cart, and checkout flows using ASP.NET Core MVC (.NET 7).</li>
-                <li>Role: Core backend features, payment flow integration, and deployment.</li>
-            </ul>
-        </div>
+      /* ---- HEADER ---- */
+      const hdr = el('header', 'cv-header');
 
-        <h2>EDUCATION</h2>
-        <p><strong>BSc in Computer Science & Engineering</strong> — AIUB &nbsp;&nbsp;&nbsp; Jan 2019 – Dec 2022<br>
-        CGPA: 3.65 / 4.00</p>
+      const img = document.createElement('img');
+      img.src = 'avater.jpg';
+      img.alt = 'Deboraj Roy';
+      img.className = 'avatar';
+      img.loading = 'lazy';
+      img.onerror = function () {
+        this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Crect fill='%231d4f8a' width='110' height='110'/%3E%3Ctext x='50%25' y='54%25' font-size='44' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='serif'%3EDR%3C/text%3E%3C/svg%3E";
+      };
+      hdr.appendChild(img);
 
-        <h2>CERTIFICATIONS</h2>
-        <ul>
-            <li>Full Stack ASP.NET Core MVC Web Development — DevSkill (2024)</li>
-            <li>Professional Programming with C# — DevSkill (2023)</li>
-            <li>AWS Services for Solutions Architect Associate — Udemy (2022)</li>
-        </ul>
+      const htxt = el('div', 'header-text');
+      htxt.appendChild(el('h1', null, cv.name));
+      htxt.appendChild(el('p', 'headline', cv.title));
+      htxt.appendChild(el('p', 'summary', cv.summary));
 
-        <h2>ADDITIONAL</h2>
-        <p><strong>Languages:</strong> English (Professional), Bengali (Native)</p>
-        <p><strong>Interests:</strong> Competitive programming, photography, chess</p>
-    </div>
-
-    <script>
-        // Theme toggle functionality
-        function toggleTheme() {
-            const html = document.documentElement;
-            const themeIcon = document.getElementById('theme-icon');
-            const currentTheme = html.getAttribute('data-theme');
-            
-            if (currentTheme === 'dark') {
-                html.removeAttribute('data-theme');
-                themeIcon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'dark');
-            }
+      const nav = document.createElement('nav');
+      nav.className = 'contact-row';
+      nav.setAttribute('aria-label', 'Contact information');
+      cv.contact.forEach(c => {
+        const a = document.createElement('a');
+        a.href = c.href;
+        if (!c.href.startsWith('mailto') && !c.href.startsWith('tel')) {
+          a.target = '_blank';
+          a.rel = 'noopener';
         }
+        const iconCls = ICONS[c.label] || 'fa-link';
+        const isFab = iconCls.startsWith('fab ');
+        const i = document.createElement('i');
+        i.className = isFab ? iconCls : 'fas ' + iconCls;
+        i.setAttribute('aria-hidden', 'true');
+        a.appendChild(i);
+        a.appendChild(document.createTextNode(c.label));
+        nav.appendChild(a);
+      });
+      htxt.appendChild(nav);
+      hdr.appendChild(htxt);
+      root.appendChild(hdr);
 
-        // Load saved theme on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            const themeIcon = document.getElementById('theme-icon');
-            
-            if (savedTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-sun';
-            }
-        });
+      /* ---- SKILLS ---- */
+      const skillsSec = el('section', 'cv-section');
+      skillsSec.setAttribute('aria-labelledby', 'skills-heading');
+      skillsSec.appendChild(secLabel('fa-code', 'Technical Skills', 'skills-heading'));
+      const grid = el('div', 'skills-grid');
+      cv.skills.forEach(s => {
+        const grp = el('div', 'skill-group');
+        grp.appendChild(el('h3', null, s.label));
+        grp.appendChild(el('p', null, s.value));
+        grid.appendChild(grp);
+      });
+      skillsSec.appendChild(grid);
+      root.appendChild(skillsSec);
 
-        // Smooth scroll animation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+      /* ---- EXPERIENCE ---- */
+      const expSec = el('section', 'cv-section');
+      expSec.setAttribute('aria-labelledby', 'exp-heading');
+      expSec.appendChild(secLabel('fa-briefcase', 'Professional Experience', 'exp-heading'));
+      cv.experience.forEach((exp, i) => {
+        if (i > 0) expSec.appendChild(divider());
+        const article = el('article', 'entry');
+        const ehdr = el('div', 'entry-header');
+        const left = el('div');
+        left.appendChild(el('h3', null, exp.title));
+        left.appendChild(el('p', 'org', exp.org + ' · ' + exp.location));
+        ehdr.appendChild(left);
+        const time = document.createElement('time');
+        time.className = 'dates';
+        time.textContent = exp.dates;
+        ehdr.appendChild(time);
+        article.appendChild(ehdr);
+        if (exp.stack) article.appendChild(el('p', 'entry-meta', exp.stack));
+        const ul = el('ul', 'entry-body');
+        exp.bullets.forEach(b => ul.appendChild(el('li', null, b)));
+        article.appendChild(ul);
+        article.appendChild(tagRow(exp.tags));
+        expSec.appendChild(article);
+      });
+      root.appendChild(expSec);
 
-        // Add hover effect to skill categories
-        const skillCategories = document.querySelectorAll('.skill-category');
-        skillCategories.forEach(category => {
-            category.addEventListener('mouseenter', function() {
-                this.style.borderLeftColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-            });
-            category.addEventListener('mouseleave', function() {
-                this.style.borderLeftColor = getComputedStyle(document.documentElement).getPropertyValue('--primary');
-            });
+      /* ---- ENTERPRISE PROJECTS ---- */
+      const entSec = el('section', 'cv-section');
+      entSec.setAttribute('aria-labelledby', 'ent-heading');
+      entSec.appendChild(secLabel('fa-building', 'Selected Enterprise Projects', 'ent-heading'));
+
+      const entNote = el('p', 'entry-meta',
+        'Designed, developed, and delivered as part of professional employment at PlayOn 24. Source code is proprietary and under client NDA.'
+      );
+      entSec.appendChild(entNote);
+
+      cv.enterpriseProjects.forEach((proj, i) => {
+        if (i > 0) entSec.appendChild(divider());
+        const article = el('article', 'entry');
+
+        const ehdr = el('div', 'entry-header');
+        const left = el('div');
+        left.appendChild(el('h3', null, proj.title));
+        left.appendChild(el('p', 'org', proj.context));
+        ehdr.appendChild(left);
+
+        /* badge: no public repo */
+        const badge = el('span', 'ent-badge', 'Client Production');
+        ehdr.appendChild(badge);
+
+        article.appendChild(ehdr);
+        const ul = el('ul', 'entry-body');
+        proj.bullets.forEach(b => ul.appendChild(el('li', null, b)));
+        article.appendChild(ul);
+        article.appendChild(tagRow(proj.tags));
+        entSec.appendChild(article);
+      });
+      root.appendChild(entSec);
+
+      /* ---- OPEN SOURCE / PERSONAL PROJECTS ---- */
+      const projSec = el('section', 'cv-section');
+      projSec.setAttribute('aria-labelledby', 'proj-heading');
+      projSec.appendChild(secLabel('fa-layer-group', 'Open Source & Personal Projects', 'proj-heading'));
+      cv.projects.forEach((proj, i) => {
+        if (i > 0) projSec.appendChild(divider());
+        const article = el('article', 'entry');
+        const ehdr = el('div', 'entry-header');
+        const left = el('div');
+        left.appendChild(el('h3', null, proj.title));
+        const orgLinks = el('p', 'org');
+        proj.links.forEach((l, li) => {
+          if (li > 0) orgLinks.appendChild(document.createTextNode(' · '));
+          const a = document.createElement('a');
+          a.href = l.href; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = l.label;
+          orgLinks.appendChild(a);
         });
-    </script>
+        left.appendChild(orgLinks);
+        ehdr.appendChild(left);
+        article.appendChild(ehdr);
+        const ul = el('ul', 'entry-body');
+        proj.bullets.forEach(b => ul.appendChild(el('li', null, b)));
+        article.appendChild(ul);
+        article.appendChild(tagRow(proj.tags));
+        projSec.appendChild(article);
+      });
+      root.appendChild(projSec);
+
+      /* ---- EDUCATION ---- */
+      const eduSec = el('section', 'cv-section');
+      eduSec.setAttribute('aria-labelledby', 'edu-heading');
+      eduSec.appendChild(secLabel('fa-graduation-cap', 'Education', 'edu-heading'));
+      cv.education.forEach((edu, i) => {
+        if (i > 0) eduSec.appendChild(divider());
+        const entry = el('div', 'edu-entry');
+        entry.appendChild(el('h3', null, edu.degree));
+        entry.appendChild(el('p', 'school', edu.school));
+        entry.appendChild(el('p', 'edu-meta', edu.dates + (edu.detail ? ' · ' + edu.detail : '')));
+        eduSec.appendChild(entry);
+      });
+      root.appendChild(eduSec);
+
+      /* ---- CERTIFICATIONS ---- */
+      const certSec = el('section', 'cv-section');
+      certSec.setAttribute('aria-labelledby', 'cert-heading');
+      certSec.appendChild(secLabel('fa-certificate', 'Certifications', 'cert-heading'));
+      const certList = el('ul', 'cert-list');
+      cv.certifications.forEach(cert => {
+        const li = el('li', 'cert-item');
+        const left = el('div');
+        left.appendChild(el('p', 'cert-name', cert.name));
+        const issuer = el('p', 'cert-issuer', cert.issuer);
+        if (cert.href) {
+          const a = document.createElement('a');
+          a.href = cert.href; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = ' · Verify';
+          issuer.appendChild(a);
+        }
+        left.appendChild(issuer);
+        li.appendChild(left);
+        const t = document.createElement('time');
+        t.className = 'cert-year';
+        t.textContent = cert.dates;
+        li.appendChild(t);
+        certList.appendChild(li);
+      });
+      certSec.appendChild(certList);
+      root.appendChild(certSec);
+
+      /* ---- ADDITIONAL ---- */
+      const addSec = el('section', 'cv-section');
+      addSec.setAttribute('aria-labelledby', 'add-heading');
+      addSec.appendChild(secLabel('fa-user-circle', 'Additional', 'add-heading'));
+      const twoCol = el('div', 'two-col');
+
+      const langDiv = el('div');
+      langDiv.appendChild(el('h3', 'additional-label', 'Languages'));
+      const langVal = el('p', 'additional-value');
+      langVal.innerHTML = cv.additional.languages.replace(/\n/g, '<br>');
+      langDiv.appendChild(langVal);
+      twoCol.appendChild(langDiv);
+
+      const intDiv = el('div');
+      intDiv.appendChild(el('h3', 'additional-label', 'Interests & Achievements'));
+      const intVal = el('p', 'additional-value');
+      intVal.innerHTML = cv.additional.interests + '<br><strong>' + cv.additional.achievement + '</strong>';
+      intDiv.appendChild(intVal);
+      twoCol.appendChild(intDiv);
+
+      addSec.appendChild(twoCol);
+      root.appendChild(addSec);
+    }
+
+    /* ============================================================
+       THEME
+    ============================================================ */
+    const htmlEl = document.documentElement;
+    const themeIcon = document.getElementById('theme-icon');
+
+    function applyTheme(dark) {
+      if (dark) {
+        htmlEl.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        htmlEl.removeAttribute('data-theme');
+        themeIcon.className = 'fas fa-moon';
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = htmlEl.hasAttribute('data-theme');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      applyTheme(!isDark);
+    }
+
+    (function initTheme() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved ? saved === 'dark' : prefersDark);
+    })();
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) applyTheme(e.matches);
+    });
+
+    /* ============================================================
+       BOOT
+    ============================================================ */
+    document.addEventListener('DOMContentLoaded', renderCV);
+  </script>
 </body>
 </html>

@@ -1,0 +1,217 @@
+/* ============================================================
+   PRINT CV — LaTeX/Overleaf-style professional layout
+   Injected into a dedicated print window by cv-print.js.
+   This file is NEVER loaded in the main page.
+============================================================ */
+
+/* ---- Page Setup ---- */
+@page {
+  size: A4;
+  margin: 18mm 20mm 18mm 20mm;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 210mm;
+  font-family: "Linux Libertine", "Georgia", "Times New Roman", serif;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #000;
+  background: #fff;
+}
+
+a { color: #000; text-decoration: none; }
+
+/* ---- Name / Header ---- */
+.p-header {
+  text-align: center;
+  border-bottom: 1.5pt solid #000;
+  padding-bottom: 6pt;
+  margin-bottom: 8pt;
+}
+
+.p-name {
+  font-size: 20pt;
+  font-weight: bold;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-family: "Linux Libertine", Georgia, serif;
+  line-height: 1.1;
+}
+
+.p-title {
+  font-size: 9.5pt;
+  color: #333;
+  margin-top: 2pt;
+  font-style: italic;
+}
+
+.p-contact {
+  font-size: 8.5pt;
+  margin-top: 5pt;
+  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.p-contact span { margin: 0 6pt; }
+.p-contact span:first-child { margin-left: 0; }
+
+/* ---- Section Heading ---- */
+.p-section-title {
+  font-size: 10pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: .75pt solid #000;
+  margin-top: 11pt;
+  margin-bottom: 5pt;
+  padding-bottom: 1.5pt;
+}
+
+/* ---- Summary ---- */
+.p-summary {
+  font-size: 9.5pt;
+  color: #111;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* ---- Experience / Project Entry ---- */
+.p-entry { margin-bottom: 7pt; page-break-inside: avoid; }
+
+.p-entry-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4pt;
+}
+
+.p-entry-title {
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+.p-entry-date {
+  font-size: 9pt;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  white-space: nowrap;
+}
+
+.p-entry-org {
+  font-size: 9.5pt;
+  font-style: italic;
+  color: #222;
+  margin-top: 1pt;
+}
+
+.p-entry-stack {
+  font-size: 8.5pt;
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 1.5pt;
+  margin-bottom: 2pt;
+}
+
+.p-entry ul {
+  padding-left: 12pt;
+  margin-top: 2pt;
+}
+
+.p-entry li {
+  font-size: 9.5pt;
+  margin-bottom: 2pt;
+  line-height: 1.45;
+  list-style-type: disc;
+}
+
+/* ---- Skills ---- */
+.p-skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2pt;
+}
+
+.p-skills-table td {
+  font-size: 9.5pt;
+  vertical-align: top;
+  padding: 1.5pt 4pt 1.5pt 0;
+  line-height: 1.45;
+}
+
+.p-skills-table td:first-child {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 28%;
+  color: #111;
+  white-space: nowrap;
+}
+
+/* ---- Education ---- */
+.p-edu { margin-bottom: 5pt; page-break-inside: avoid; }
+
+/* ---- Certs ---- */
+.p-cert {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 9.5pt;
+  margin-bottom: 3pt;
+  gap: 8pt;
+}
+
+.p-cert-name { font-weight: bold; }
+.p-cert-issuer { color: #444; font-style: italic; font-size: 9pt; }
+.p-cert-date {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 9pt;
+  white-space: nowrap;
+}
+
+/* ---- Section note (NDA / context disclaimer) ---- */
+.p-section-note {
+  font-size: 8.5pt;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 5pt;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---- Enterprise project context line ---- */
+.p-entry-context {
+  font-size: 8.5pt;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #444;
+  margin-top: 1pt;
+  margin-bottom: 2pt;
+}
+
+/* ---- Projects ---- */
+.p-proj-link {
+  font-size: 8.5pt;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  margin-top: 1pt;
+}
+
+/* ---- Additional / two-col ---- */
+.p-two-col {
+  display: flex;
+  gap: 20pt;
+}
+
+.p-two-col > div { flex: 1; }
+
+.p-mini-label {
+  font-size: 9pt;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 2pt;
+}
+
+.p-mini-value { font-size: 9.5pt; line-height: 1.5; }
