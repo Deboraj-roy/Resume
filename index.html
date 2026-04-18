@@ -38,19 +38,29 @@
   <script>
     /* ============================================================
        ICON MAP — maps contact label to Font Awesome class
+       Used to render relevant icons next to contact information.
     ============================================================ */
     const ICONS = {
-      'deborajroy.in@gmail.com':          'fa-envelope',
-      '+880 1708 119559':                  'fa-phone',
-      'github.com/Deboraj-roy':            'fab fa-github',
-      'linkedin.com/in/deboraj-roy':       'fab fa-linkedin',
-      'codeforces.com/profile/DEBORAJ':    'fa-code',
-      'deboraj.me':                        'fa-globe',
+      'deborajroy.in@gmail.com':           'fa-envelope', // Email icon
+      '+880 1708 119559':                  'fa-phone', // Phone icon
+      'GitHub':                            'fab fa-github', // GitHub logo
+      'LinkedIn':                          'fab fa-linkedin', // LinkedIn logo
+      'Codeforces':                        'fa-code', // Code icon for competitive programming
+      'Portfolio':                         'fa-globe', // Globe icon for personal website
     };
 
     /* ============================================================
        SMALL DOM HELPER
+       These are utility functions to easily create HTML elements 
+       and append them to the DOM dynamically via JS.
     ============================================================ */
+    
+    /**
+     * Helper to create an HTML element with an optional class and children.
+     * @param {string} tag - HTML tag name (e.g., 'div', 'span')
+     * @param {string|null} cls - CSS class name
+     * @param {...any} children - Strings or DOM Elements to nest inside
+     */
     function el(tag, cls, ...children) {
       const e = document.createElement(tag);
       if (cls) e.className = cls;
@@ -62,6 +72,12 @@
       return e;
     }
 
+    /**
+     * Helper to create a section header with an icon.
+     * @param {string} iconClass - FontAwesome icon class (e.g., 'fa-briefcase')
+     * @param {string} text - Title of the section
+     * @param {string} id - HTML ID for the section
+     */
     function secLabel(iconClass, text, id) {
       const h2 = document.createElement('h2');
       h2.className = 'section-label';
@@ -70,12 +86,19 @@
       return h2;
     }
 
+    /**
+     * Helper to create a row of skill or tech tags.
+     * @param {string[]} tags - Array of tag strings
+     */
     function tagRow(tags) {
       const row = el('div', 'tag-row');
       tags.forEach(t => row.appendChild(el('span', 'tag', t)));
       return row;
     }
 
+    /**
+     * Helper to create a visual divider line.
+     */
     function divider() {
       const hr = document.createElement('hr');
       hr.className = 'divider';
@@ -85,13 +108,16 @@
     /* ============================================================
        PORTFOLIO RENDERER
        Reads window.CV (defined in cv-print.js) and builds
-       the visual portfolio DOM. Single source of truth.
+       the visual portfolio DOM dynamically using JavaScript.
+       This function constructs the layout for HTML output based 
+       on a single data source object format.
     ============================================================ */
     function renderCV() {
-      const cv = window.CV;
+      const cv = window.CV; // Loaded global variable holding the full JSON CV data
       const root = document.getElementById('cv-root');
 
       /* ---- HEADER ---- */
+      // Create top branding view (Name, Headline, Summary, and Contacts)
       const hdr = el('header', 'cv-header');
 
       const img = document.createElement('img');
@@ -99,6 +125,7 @@
       img.alt = 'Deboraj Roy';
       img.className = 'avatar';
       img.loading = 'lazy';
+      // Default SVG fallback logic for avatar loading error
       img.onerror = function () {
         this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Crect fill='%231d4f8a' width='110' height='110'/%3E%3Ctext x='50%25' y='54%25' font-size='44' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='serif'%3EDR%3C/text%3E%3C/svg%3E";
       };

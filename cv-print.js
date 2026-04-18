@@ -18,12 +18,12 @@
     title: 'Software Engineer · ASP.NET Core & Enterprise Systems',
 
     contact: [
-      { label: 'deborajroy.in@gmail.com',        href: 'mailto:deborajroy.in@gmail.com' },
-      { label: '+880 1708 119559',                href: 'tel:+8801708119559' },
-      { label: 'github.com/Deboraj-roy',          href: 'https://github.com/Deboraj-roy' },
-      { label: 'linkedin.com/in/deboraj-roy',     href: 'https://linkedin.com/in/deboraj-roy' },
-      { label: 'codeforces.com/profile/DEBORAJ',  href: 'https://codeforces.com/profile/DEBORAJ' },
-      { label: 'deboraj.me',                      href: 'https://deboraj.me' },
+      { label: 'deborajroy.in@gmail.com',        href: 'mailto:deborajroy.in@gmail.com' }, // Primary email contact
+      { label: '+880 1708 119559',               href: 'tel:+8801708119559' }, // Phone contact
+      { label: 'github.com/Deboraj-roy',         href: 'https://github.com/Deboraj-roy' }, // Developer profile
+      { label: 'linkedin.com/in/deboraj-roy',    href: 'https://linkedin.com/in/deboraj-roy' }, // Professional network
+      { label: 'codeforces.com/profile/DEBORAJ', href: 'https://codeforces.com/profile/DEBORAJ' }, // Competitive programming
+      { label: 'deboraj.me',                     href: 'https://deboraj.me' }, // Professional website
     ],
 
     summary: 'Software engineer with 2+ years of experience designing and delivering enterprise-grade ERP, distribution, and business systems. Proven track record shipping production software to 10+ clients across manufacturing, sales, inventory, and service domains. Passionate about clean architecture, SQL performance, and scalable multi-tenant systems. Seeking a Senior Software Engineer role where I can drive technical strategy and mentor teams.',
