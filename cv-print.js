@@ -185,11 +185,18 @@
      PRINT ENGINE
      Builds a standalone A4 HTML document for the print window.
      Reads exclusively from window.CV above.
+     Optimized for PDF printing with professional typography.
   ============================================================ */
 
   function h(tag, attrs, ...children) {
     const el = document.createElement(tag);
-    if (attrs) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    if (attrs) {
+      Object.entries(attrs).forEach(([k, v]) => {
+        if (v !== null && v !== undefined && v !== false) {
+          el.setAttribute(k, v);
+        }
+      });
+    }
     children.forEach(c => {
       if (c == null) return;
       el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
@@ -198,28 +205,32 @@
   }
 
   function secTitle(text) {
-    return h('div', { class: 'p-section-title' }, text);
+    return h('h2', { class: 'p-section-title' }, text);
   }
 
   /* Renders a standard entry block (experience, enterprise project, open-source project) */
   function renderEntry(body, opts) {
-    const entry = h('div', { class: 'p-entry' });
+    const entry = h('article', { class: 'p-entry' });
 
     /* Title row with optional date on the right */
     const row = h('div', { class: 'p-entry-row' });
-    row.appendChild(h('div', { class: 'p-entry-title' }, opts.title));
-    if (opts.date) row.appendChild(h('div', { class: 'p-entry-date' }, opts.date));
+    const titleEl = h('h3', { class: 'p-entry-title' }, opts.title);
+    row.appendChild(titleEl);
+    if (opts.date) {
+      const dateEl = h('span', { class: 'p-entry-date' }, opts.date);
+      row.appendChild(dateEl);
+    }
     entry.appendChild(row);
 
     /* Sub-line: org / context / links */
     if (opts.sub) {
-      const sub = h('div', { class: 'p-entry-org' }, opts.sub);
+      const sub = h('p', { class: 'p-entry-org' }, opts.sub);
       entry.appendChild(sub);
     }
 
     /* Tech stack line */
     if (opts.stack) {
-      entry.appendChild(h('div', { class: 'p-entry-stack' }, 'Tech: ' + opts.stack));
+      entry.appendChild(h('p', { class: 'p-entry-stack' }, 'Tech: ' + opts.stack));
     }
 
     /* Link line for open-source projects */
@@ -227,7 +238,8 @@
       const linkLine = h('div', { class: 'p-proj-link' });
       opts.links.forEach((l, i) => {
         if (i > 0) linkLine.appendChild(document.createTextNode(' · '));
-        linkLine.appendChild(h('a', { href: l.href }, l.label + ': ' + l.href));
+        const link = h('a', { href: l.href, target: '_blank', rel: 'noopener noreferrer' }, l.label + ': ' + l.href);
+        linkLine.appendChild(link);
       });
       entry.appendChild(linkLine);
     }
@@ -250,25 +262,57 @@
       : (document.querySelector('script[src*="cv-print"]') || {}).src || '';
     const base = scriptSrc.substring(0, scriptSrc.lastIndexOf('/') + 1);
 
+    /* Meta tags */
     doc.head.appendChild(h('meta', { charset: 'UTF-8' }));
-    doc.head.appendChild(h('meta', { name: 'viewport', content: 'width=device-width' }));
-    doc.head.appendChild(h('title', {}, cv.name + ' — CV'));
+    doc.head.appendChild(h('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }));
+    doc.head.appendChild(h('title', {}, cv.name + ' — Professional CV'));
+
+    /* Professional fonts */
+    doc.head.appendChild(h('link', {
+      rel: 'preconnect',
+      href: 'https://fonts.googleapis.com'
+    }));
+    doc.head.appendChild(h('link', {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      crossorigin: 'anonymous'
+    }));
     doc.head.appendChild(h('link', {
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap',
+      href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Roboto+Mono:wght@400;600&display=swap',
     }));
+
+    /* Print CSS */
     doc.head.appendChild(h('link', { rel: 'stylesheet', href: base + 'print.css' }));
+
+    /* Inline print optimization styles */
+    const printStyles = doc.createElement('style');
+    printStyles.textContent = `
+      @media print {
+        body { orphans: 4; widows: 4; }
+        .p-entry, .p-edu, .p-cert, .p-section-note, .p-two-col { page-break-inside: avoid; }
+      }
+      @page {
+        size: A4;
+        margin: 1.8cm 2cm 1.8cm 2cm;
+        orphans: 4;
+        widows: 4;
+      }
+    `;
+    doc.head.appendChild(printStyles);
 
     const body = doc.body;
 
     /* ---- HEADER ---- */
-    const hdr = h('div', { class: 'p-header' });
-    hdr.appendChild(h('div', { class: 'p-name' }, cv.name));
-    hdr.appendChild(h('div', { class: 'p-title' }, cv.title));
-    const contactLine = h('div', { class: 'p-contact' });
-    cv.contact.forEach(c => {
+    const hdr = h('header', { class: 'p-header' });
+    hdr.appendChild(h('h1', { class: 'p-name' }, cv.name));
+    hdr.appendChild(h('p', { class: 'p-title' }, cv.title));
+    
+    const contactLine = h('div', { class: 'p-contact', role: 'contentinfo' });
+    cv.contact.forEach((c, i) => {
       const sp = h('span');
-      sp.appendChild(h('a', { href: c.href }, c.label));
+      const link = h('a', { href: c.href, title: c.label }, c.label);
+      sp.appendChild(link);
       contactLine.appendChild(sp);
     });
     hdr.appendChild(contactLine);
@@ -331,12 +375,12 @@
     /* ---- EDUCATION ---- */
     body.appendChild(secTitle('Education'));
     cv.education.forEach(edu => {
-      const entry = h('div', { class: 'p-edu' });
+      const entry = h('article', { class: 'p-edu' });
       const row = h('div', { class: 'p-entry-row' });
-      row.appendChild(h('div', { class: 'p-entry-title' }, edu.degree));
-      row.appendChild(h('div', { class: 'p-entry-date' }, edu.dates));
+      row.appendChild(h('h3', { class: 'p-entry-title' }, edu.degree));
+      row.appendChild(h('span', { class: 'p-entry-date' }, edu.dates));
       entry.appendChild(row);
-      entry.appendChild(h('div', { class: 'p-entry-org' },
+      entry.appendChild(h('p', { class: 'p-entry-org' },
         edu.school + (edu.detail ? ' · ' + edu.detail : '')
       ));
       body.appendChild(entry);
@@ -348,7 +392,7 @@
       const row = h('div', { class: 'p-cert' });
       const left = h('div');
       const nameEl = cert.href
-        ? h('a', { href: cert.href, class: 'p-cert-name' }, cert.name)
+        ? h('a', { href: cert.href, target: '_blank', rel: 'noopener noreferrer', class: 'p-cert-name' }, cert.name)
         : h('span', { class: 'p-cert-name' }, cert.name);
       left.appendChild(nameEl);
       left.appendChild(h('span', { class: 'p-cert-issuer' }, ' — ' + cert.issuer));
@@ -382,19 +426,29 @@
 
   /* ============================================================
      PUBLIC API
+     Generates and opens a professional print preview window
   ============================================================ */
   window.generatePrintCV = function () {
     const printDoc = buildPrintDoc(window.CV);
-    const win = window.open('', '_blank', 'width=900,height=700');
-    if (!win) {
-      alert('Please allow pop-ups for this site to open the print preview.');
+    const printWindow = window.open('', '_blank', 'width=1000,height=800');
+    if (!printWindow) {
+      alert('Pop-ups are blocked. Please allow pop-ups for this site to open the print preview.');
       return;
     }
-    win.document.open();
-    win.document.write('<!DOCTYPE html>' + printDoc.documentElement.outerHTML);
-    win.document.close();
-    win.addEventListener('load', function () {
-      setTimeout(function () { win.focus(); win.print(); }, 400);
+
+    printWindow.document.open();
+    printWindow.document.write(
+      '<!DOCTYPE html>\n' +
+      printDoc.documentElement.outerHTML
+    );
+    printWindow.document.close();
+
+    /* Trigger print dialog after content loads */
+    printWindow.addEventListener('load', function() {
+      setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+      }, 500);
     });
   };
 

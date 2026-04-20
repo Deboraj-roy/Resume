@@ -1,5 +1,5 @@
 /* ============================================================
-   PRINT CV — LaTeX/Overleaf-style professional layout
+   PRINT CV — Professional A4 layout optimized for PDF export
    Injected into a dedicated print window by cv-print.js.
    This file is NEVER loaded in the main page.
 ============================================================ */
@@ -7,211 +7,305 @@
 /* ---- Page Setup ---- */
 @page {
   size: A4;
-  margin: 18mm 20mm 18mm 20mm;
+  margin: 1.8cm 2cm 1.8cm 2cm;
+  orphans: 4;
+  widows: 4;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html, body {
   width: 210mm;
-  font-family: "Linux Libertine", "Georgia", "Times New Roman", serif;
-  font-size: 10pt;
-  line-height: 1.45;
+  height: 297mm;
+  font-family: "Segoe UI", "Roboto", "Inter", "Georgia", "Times New Roman", serif;
+  font-size: 11pt;
+  line-height: 1.5;
   color: #000;
   background: #fff;
+  margin: 0;
+  padding: 0;
 }
 
-a { color: #000; text-decoration: none; }
+body {
+  padding: 1.8cm 2cm;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+/* Ensure proper printing */
+@media print {
+  html, body {
+    margin: 0;
+    padding: 1.8cm 2cm;
+    width: 100%;
+    height: auto;
+    background: #fff;
+  }
+  
+  body {
+    orphans: 4;
+    widows: 4;
+  }
+}
 
 /* ---- Name / Header ---- */
 .p-header {
   text-align: center;
   border-bottom: 1.5pt solid #000;
-  padding-bottom: 6pt;
-  margin-bottom: 8pt;
+  padding-bottom: 8pt;
+  margin-bottom: 10pt;
+  page-break-inside: avoid;
 }
 
 .p-name {
-  font-size: 20pt;
-  font-weight: bold;
-  letter-spacing: .04em;
+  font-size: 18pt;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-family: "Linux Libertine", Georgia, serif;
-  line-height: 1.1;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, sans-serif;
+  line-height: 1.2;
+  margin-bottom: 2pt;
 }
 
 .p-title {
-  font-size: 9.5pt;
+  font-size: 12pt;
   color: #333;
-  margin-top: 2pt;
-  font-style: italic;
+  margin: 2pt 0 0 0;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .p-contact {
-  font-size: 8.5pt;
-  margin-top: 5pt;
+  font-size: 10pt;
+  margin-top: 6pt;
   color: #222;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12pt;
 }
 
-.p-contact span { margin: 0 6pt; }
-.p-contact span:first-child { margin-left: 0; }
+.p-contact span {
+  white-space: nowrap;
+  word-break: break-word;
+}
 
 /* ---- Section Heading ---- */
 .p-section-title {
-  font-size: 10pt;
-  font-weight: bold;
+  font-size: 12pt;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .08em;
-  font-family: Arial, Helvetica, sans-serif;
-  border-bottom: .75pt solid #000;
-  margin-top: 11pt;
-  margin-bottom: 5pt;
-  padding-bottom: 1.5pt;
+  letter-spacing: 0.08em;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  border-bottom: 1pt solid #000;
+  margin-top: 10pt;
+  margin-bottom: 6pt;
+  padding-bottom: 2pt;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+  color: #000;
 }
 
 /* ---- Summary ---- */
 .p-summary {
-  font-size: 9.5pt;
+  font-size: 11pt;
   color: #111;
   line-height: 1.5;
-  text-align: justify;
+  text-align: left;
+  margin-bottom: 4pt;
 }
 
 /* ---- Experience / Project Entry ---- */
-.p-entry { margin-bottom: 7pt; page-break-inside: avoid; }
+.p-entry {
+  margin-bottom: 8pt;
+  page-break-inside: avoid;
+  padding: 0;
+}
 
 .p-entry-row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 4pt;
+  align-items: flex-start;
+  gap: 8pt;
+  margin-bottom: 1pt;
 }
 
 .p-entry-title {
-  font-size: 10pt;
-  font-weight: bold;
+  font-size: 11pt;
+  font-weight: 600;
+  color: #000;
+  flex: 1;
 }
 
 .p-entry-date {
-  font-size: 9pt;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #333;
+  font-size: 10pt;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  color: #444;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .p-entry-org {
-  font-size: 9.5pt;
+  font-size: 10pt;
   font-style: italic;
-  color: #222;
+  color: #333;
   margin-top: 1pt;
+  margin-bottom: 2pt;
 }
 
 .p-entry-stack {
-  font-size: 8.5pt;
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  color: #555;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
   margin-top: 1.5pt;
-  margin-bottom: 2pt;
+  margin-bottom: 3pt;
+  font-weight: 500;
 }
 
 .p-entry ul {
-  padding-left: 12pt;
-  margin-top: 2pt;
+  padding-left: 14pt;
+  margin-top: 3pt;
+  margin-bottom: 0;
 }
 
 .p-entry li {
-  font-size: 9.5pt;
-  margin-bottom: 2pt;
-  line-height: 1.45;
+  font-size: 10pt;
+  margin-bottom: 3pt;
+  line-height: 1.5;
   list-style-type: disc;
+  color: #000;
 }
 
 /* ---- Skills ---- */
 .p-skills-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 2pt;
+  margin-top: 4pt;
+  margin-bottom: 2pt;
 }
 
 .p-skills-table td {
-  font-size: 9.5pt;
+  font-size: 10pt;
   vertical-align: top;
-  padding: 1.5pt 4pt 1.5pt 0;
-  line-height: 1.45;
+  padding: 2pt 4pt 2pt 0;
+  line-height: 1.5;
+  border: none;
 }
 
 .p-skills-table td:first-child {
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 28%;
-  color: #111;
+  font-weight: 600;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  width: 22%;
+  color: #000;
   white-space: nowrap;
+  padding-right: 8pt;
+}
+
+.p-skills-table tr {
+  page-break-inside: avoid;
 }
 
 /* ---- Education ---- */
-.p-edu { margin-bottom: 5pt; page-break-inside: avoid; }
+.p-edu {
+  margin-bottom: 6pt;
+  page-break-inside: avoid;
+}
 
 /* ---- Certs ---- */
 .p-cert {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  font-size: 9.5pt;
-  margin-bottom: 3pt;
-  gap: 8pt;
+  align-items: flex-start;
+  font-size: 10pt;
+  margin-bottom: 4pt;
+  gap: 12pt;
+  page-break-inside: avoid;
 }
 
-.p-cert-name { font-weight: bold; }
-.p-cert-issuer { color: #444; font-style: italic; font-size: 9pt; }
+.p-cert-name {
+  font-weight: 600;
+  flex: 1;
+}
+
+.p-cert-issuer {
+  color: #555;
+  font-style: italic;
+  font-size: 10pt;
+}
+
 .p-cert-date {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #333;
-  font-size: 9pt;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  color: #555;
+  font-size: 10pt;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ---- Section note (NDA / context disclaimer) ---- */
 .p-section-note {
-  font-size: 8.5pt;
+  font-size: 9pt;
   font-style: italic;
-  color: #555;
-  margin-bottom: 5pt;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  margin-bottom: 6pt;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  page-break-inside: avoid;
 }
 
 /* ---- Enterprise project context line ---- */
 .p-entry-context {
-  font-size: 8.5pt;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #444;
+  font-size: 9pt;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  color: #555;
   margin-top: 1pt;
   margin-bottom: 2pt;
 }
 
 /* ---- Projects ---- */
 .p-proj-link {
-  font-size: 8.5pt;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #333;
-  margin-top: 1pt;
+  font-size: 9pt;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  color: #555;
+  margin-top: 2pt;
+  margin-bottom: 1pt;
+}
+
+.p-proj-link a {
+  text-decoration: underline;
 }
 
 /* ---- Additional / two-col ---- */
 .p-two-col {
   display: flex;
   gap: 20pt;
+  margin-top: 4pt;
+  page-break-inside: avoid;
 }
 
-.p-two-col > div { flex: 1; }
+.p-two-col > div {
+  flex: 1;
+}
 
 .p-mini-label {
-  font-size: 9pt;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: 600;
+  font-family: "Segoe UI", "Roboto", "Inter", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
-  letter-spacing: .05em;
-  margin-bottom: 2pt;
+  letter-spacing: 0.05em;
+  margin-bottom: 3pt;
+  color: #000;
 }
 
-.p-mini-value { font-size: 9.5pt; line-height: 1.5; }
+.p-mini-value {
+  font-size: 10pt;
+  line-height: 1.5;
+  color: #111;
+}
