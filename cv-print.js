@@ -167,6 +167,7 @@
     ],
 
     certifications: [
+      { name: '.NET Core Microservices',      issuer: 'Udemy', dates: 'Oct 2024', href: 'https://www.udemy.com/certificate/UC-29f57052-58d3-4534-ab25-d45dfd4bd558/' },
       { name: 'Full Stack ASP.NET Core MVC Web Development',      issuer: 'DevSkill', dates: 'Sep 2023 – Apr 2024', href: '' },
       { name: 'Professional Programming with C#',                  issuer: 'DevSkill', dates: 'Jan – Apr 2023',      href: 'https://devskill.com/Certificate/567/wgijyqmbpvb' },
       { name: 'ASP.NET Core MVC — Build a Complete eCommerce App', issuer: 'Udemy',    dates: 'Jan 2024',            href: 'https://www.udemy.com/certificate/UC-0bf7939d-d0a8-4b9f-b6aa-670b692b9cc8/' },
