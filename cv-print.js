@@ -31,18 +31,34 @@
     skills: [
       { label: 'Languages & Frameworks', value: 'C#, .NET 8, ASP.NET Core MVC, ASP.NET Core Web API, Entity Framework Core, LINQ' },
       { label: 'Frontend',               value: 'Angular, TypeScript, HTML5, CSS3, JavaScript, RDLC Reports' },
-      { label: 'Databases',              value: 'SQL Server 2019, Stored Procedures, Triggers, Query Optimisation, MySQL, Oracle (basic)' },
-      { label: 'Architecture',           value: 'ERP Systems, Microservices, REST APIs, JWT / OAuth2, Multi-tenant Architecture, Clean Architecture, ACID Transactions' },
-      { label: 'Cloud & DevOps',         value: 'Docker, AWS (EC2, S3, Solutions Architect), Azure (familiar), cPanel, Linux, CI/CD basics' },
+      { label: 'Databases',              value: 'SQL Server 2019, Stored Procedures, Triggers, Query Optimisation, MySQL, Oracle' },
+      { label: 'Architecture',           value: 'ERP Systems, Microservices, REST APIs, JWT / OAuth2, Multi-tenant Architecture, Clean Architecture, ACID Transactions, Formula Evaluation Pipelines, Real-time Cell Computation' },
+      { label: 'Cloud & DevOps',         value: 'Docker, Kubernetes, Jenkins, Nginx, Cloudflare, AWS (EC2, S3, Solutions Architect), Azure, cPanel, Linux, CI/CD basics' },
+      { label: 'AI & Automation',        value: 'N8N (AI agent workflows for client projects)' },
       { label: 'Tools & Testing',        value: 'Visual Studio, SSMS, Git, TortoiseGit, Docker, xUnit, NUnit, Sublime Text' },
     ],
 
     experience: [
+
+      {
+        title:    'Software Engineer',
+        org:      'Global Software Architects (GSA)',
+        location: 'Dhaka, Bangladesh',
+        dates:    'Jan 2026 – Present',
+        stack:    'ASP.NET Core · C# · Angular · TypeScript · SQL Server · REST APIs',
+        bullets: [
+          'Developed enterprise-grade spreadsheet functionality in an Angular and Kendo UI application, enabling large-scale business data editing, Excel export/import, and interactive spreadsheet management.',
+          'Engineered and integrated RESTful API endpoints in ASP.NET Core, enabling seamless data persistence and real-time cell computation modules.',
+          'Developed new feature modules including restricted column drag-fill logic, cell validation rules, and formula evaluation pipelines — improving data integrity and end-user control across business workflows.',
+          'Developed an AI agent for a client leveraging OpenAI (ChatGPT) and Anthropic (Claude) models via token-based API integration, automating workflow tasks and reducing manual processing time.',
+        ],
+        tags: ['ASP.NET Core','C#','Angular','TypeScript','SQL Server','REST API','Kendo UI','AI'],
+      },
       {
         title:    'Software Engineer',
         org:      'PlayOn 24',
         location: 'Dhaka, Bangladesh',
-        dates:    'Oct 2023 – Present',
+        dates:    'Oct 2023 – Dec 2025',
         stack:    'ASP.NET Core · C# · SQL Server · Angular · RDLC · Docker · REST APIs',
         bullets: [
           'Designed and built enterprise ERP systems covering sales, inventory, manufacturing, distribution, and service operations — delivered to 10+ clients with tailored configurations per business unit.',
