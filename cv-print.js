@@ -49,8 +49,8 @@
         bullets: [
           'Developed enterprise-grade spreadsheet functionality in an Angular and Kendo UI application, enabling large-scale business data editing, Excel export/import, and interactive spreadsheet management.',
           'Engineered and integrated RESTful API endpoints in ASP.NET Core, enabling seamless data persistence and real-time cell computation modules.',
-          'Developed new feature modules including restricted column drag-fill logic, cell validation rules, and formula evaluation pipelines — improving data integrity and end-user control across business workflows.',
-          'Developed an AI agent for a client leveraging OpenAI (ChatGPT) and Anthropic (Claude) models via token-based API integration, automating workflow tasks and reducing manual processing time.',
+          'Implemented new feature modules including restricted column drag-fill logic, cell validation rules, and formula evaluation pipelines — improving data integrity and end-user control across business workflows.',
+          'Optimised an AI agent for a client leveraging OpenAI (ChatGPT) and Anthropic (Claude) models via token-based API integration, automating workflow tasks and reducing manual processing time.',
         ],
         tags: ['ASP.NET Core','C#','Angular','TypeScript','SQL Server','REST API','Kendo UI','AI'],
       },
