@@ -34,7 +34,7 @@
       { label: 'Databases',              value: 'SQL Server 2019, Stored Procedures, Triggers, Query Optimisation, MySQL, Oracle' },
       { label: 'Architecture',           value: 'ERP Systems, Microservices, REST APIs, JWT / OAuth2, Multi-tenant Architecture, Clean Architecture, ACID Transactions, Formula Evaluation Pipelines, Real-time Cell Computation' },
       { label: 'Cloud & DevOps',         value: 'Docker, Kubernetes, Jenkins, Nginx, Cloudflare, AWS (EC2, S3, Solutions Architect), Azure, cPanel, Linux, CI/CD basics' },
-      { label: 'AI & Automation',        value: 'N8N (AI agent workflows for client projects)' },
+      { label: 'AI & Automation',        value: 'n8n, AI Agents, OpenAI & Anthropic APIs, Workflow Automation' },
       { label: 'Tools & Testing',        value: 'Visual Studio, SSMS, Git, TortoiseGit, Docker, xUnit, NUnit, Sublime Text' },
     ],
 
